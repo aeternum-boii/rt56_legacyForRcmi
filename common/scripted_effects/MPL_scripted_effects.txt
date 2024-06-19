@@ -4,10 +4,24 @@ MPL_trigger_collapse_ISR = {
 		disband = no
 	}
 	PAL = {
-		news_event = {
-			id = mandate_palestine.201
-			days = 2
-			random_hours = 12
+		if = {
+			limit = {
+				MPL = {
+					has_completed_focus = MPL_two_people_union
+				}
+			}
+			news_event = {
+				id = mandate_palestine.202
+				days = 2
+				random_hours = 12
+			}
+		}
+		else = {
+			news_event = {
+				id = mandate_palestine.201
+				days = 2
+				random_hours = 12
+			}
 		}
 		hidden_effect = {
 			
@@ -60,7 +74,6 @@ MPL_trigger_collapse_ISR = {
 	}
 	ISR = {
 		set_cosmetic_tag = ISR_revolt
-		set_province_controller = 4088
 	}
 	set_global_flag = MPL_ISR_collapse_trigger
 	ISR = {
@@ -74,8 +87,7 @@ MPL_trigger_collapse_ISR = {
 			if = {
 				limit = {
 					MPL = {
-						has_country_flag = MPL_is_ai
-						
+						is_ai = yes
 					}
 				}
 				add_ideas = MPL_collapse_no_focus
@@ -86,6 +98,7 @@ MPL_trigger_collapse_ISR = {
 			target = PAL
 			type = annex_everything
 		}
+		add_civil_war_target = PAL
 		hidden_effect = {
 			load_oob = "ISR_1936"
 		}
@@ -93,14 +106,6 @@ MPL_trigger_collapse_ISR = {
 			id = mandate_palestine.101
 			days = 2
 			random_hours = 12
-		}
-		hidden_effect = {
-			country_event = {
-				id = mandate_palestine.1004
-				days = 20
-				random_days = 10
-				random_hours = 24
-			}
 		}
 		activate_mission = ISR_mandate_collapse_mission
 		activate_mission = ISR_hold_haifa_mission
@@ -120,8 +125,7 @@ MPL_trigger_collapse_ISR = {
 			if = {
 				limit = {
 					MPL = {
-						has_country_flag = MPL_is_ai
-						
+						is_ai = yes
 					}
 				}
 				add_ideas = MPL_collapse_no_focus
@@ -139,14 +143,6 @@ MPL_trigger_collapse_ISR = {
 			id = mandate_palestine.102
 			days = 2
 			random_hours = 12
-		}
-		hidden_effect = {
-			country_event = {
-				id = mandate_palestine.1004
-				days = 20
-				random_days = 10
-				random_hours = 24
-			}
 		}
 	}
 }
@@ -167,14 +163,27 @@ MPL_trigger_collapse_PAL = {
 	}
 	ISR = {
 		set_cosmetic_tag = ISR_revolt
-		set_province_controller = 4088
 	}
 	set_global_flag = MPL_PAL_collapse_trigger
 	PAL = {
-		news_event = {
-			id = mandate_palestine.201
-			days = 2
-			random_hours = 12
+		if = {
+			limit = {
+				MPL = {
+					has_completed_focus = MPL_two_people_union
+				}
+			}
+			news_event = {
+				id = mandate_palestine.202
+				days = 2
+				random_hours = 12
+			}
+		}
+		else = {
+			news_event = {
+				id = mandate_palestine.201
+				days = 2
+				random_hours = 12
+			}
 		}
 		hidden_effect = {
 			
@@ -227,8 +236,7 @@ MPL_trigger_collapse_PAL = {
 			if = {
 				limit = {
 					MPL = {
-						has_country_flag = MPL_is_ai
-						
+						is_ai = yes
 					}
 				}
 				add_ideas = MPL_collapse_no_focus
@@ -239,6 +247,7 @@ MPL_trigger_collapse_PAL = {
 			target = ISR
 			type = annex_everything
 		}
+		add_civil_war_target = ISR
 		hidden_effect = {
 			load_oob = "PAL_civil_war"
 		}
@@ -246,14 +255,6 @@ MPL_trigger_collapse_PAL = {
 			id = mandate_palestine.102
 			days = 2
 			random_hours = 12
-		}
-		hidden_effect = {
-			country_event = {
-				id = mandate_palestine.1004
-				days = 20
-				random_days = 10
-				random_hours = 24
-			}
 		}
 		activate_mission = PAL_mandate_collapse_mission
 		activate_mission = PAL_take_haifa_mission
@@ -273,8 +274,7 @@ MPL_trigger_collapse_PAL = {
 			if = {
 				limit = {
 					MPL = {
-						has_country_flag = MPL_is_ai
-						
+						is_ai = yes
 					}
 				}
 				add_ideas = MPL_collapse_no_focus
@@ -283,14 +283,6 @@ MPL_trigger_collapse_PAL = {
 		inherit_technology = MPL
 		hidden_effect = {
 			load_oob = "ISR_1936"
-		}
-		hidden_effect = {
-			country_event = {
-				id = mandate_palestine.1004
-				days = 20
-				random_days = 10
-				random_hours = 24
-			}
 		}
 		activate_mission = ISR_mandate_collapse_mission
 		activate_mission = ISR_hold_haifa_mission
@@ -327,7 +319,7 @@ MPL_jerusalem_conference_effect = {
 		days = 1
 		random_hours = 12
 	}
-	country_event = {
+	news_event = {
 		id = mandate_palestine.207
 		days = 1 
 		random_hours = 12
@@ -413,22 +405,13 @@ MPL_jerusalem_conference_effect = {
 		remove_state_claim = 949
 		remove_state_claim = 454
 	}
-	if = {
-		limit = {
-			has_dlc = "Together for Victory"
-		}
-		set_autonomy = {
-			target = PAL
-			autonomy_state = autonomy_protectorate
-		}
-		set_autonomy = {
-			target = ISR
-			autonomy_state = autonomy_protectorate
-		}
+	set_autonomy = {
+		target = PAL
+		autonomy_state = autonomy_protectorate
 	}
-	else = {
-		puppet = ISR
-		puppet = PAL
+	set_autonomy = {
+		target = ISR
+		autonomy_state = autonomy_protectorate
 	}
 	remove_ideas = MPL_aliyah_start
 	hidden_effect = {

@@ -1916,6 +1916,41 @@ country = {
 			defense_bonus_against = -0.05
 		}
 	}
+	
+	POL_bop_sanation_left_unrest_idea = {
+	
+		picture = POL_sanation_left_opposition_2
+		
+		removal_cost = -1
+		
+		allowed = {
+			always = no
+		}
+		
+		modifier = {
+			stability_factor = -0.15
+			power_balance_weekly = -0.015
+		}
+	}
+	
+	POL_bop_sanation_right_unrest_idea = {
+	
+		picture = POL_sanation_right_opposition_2
+		
+		removal_cost = -1
+		
+		allowed = {
+			always = no
+		}
+		
+		modifier = {
+			war_support_factor = -0.15
+			power_balance_weekly = 0.015
+		}
+	}
+	
+	
+	
 }
 	materiel_manufacturer = {
 			
@@ -2164,117 +2199,6 @@ country = {
 						}
 					}
 				}
-			}
-		}
-		POL_dummy =
-		{
-			allowed = {
-				original_tag = POL
-			}
-			traits = { tank_manufacturer }
-			modifier = {
-			}
-		
-			ai_will_do = {
-				factor = 0
-			}
-		}
-		
-		POL_dummy2 =
-		{
-			allowed = {
-				original_tag = POL
-			}
-			traits = { fascist_demagogue }
-			modifier = {
-			}
-		
-			ai_will_do = {
-				factor = 0
-			}
-		}
-		
-		POL_dummy3 =
-		{
-			allowed = {
-				original_tag = POL
-			}
-			traits = { communist_revolutionary }
-			modifier = {
-			}
-		
-			ai_will_do = {
-				factor = 0
-			}
-		}
-		
-		POL_dummy4 =
-		{
-			allowed = {
-				original_tag = POL
-			}
-			traits = { democratic_reformer }
-			modifier = {
-			}
-		
-			ai_will_do = {
-				factor = 0
-			}
-		}
-		
-		POL_dummy5 =
-		{
-			allowed = {
-				original_tag = POL
-			}
-			traits = { industrial_concern }
-			modifier = {
-			}
-		
-			ai_will_do = {
-				factor = 0
-			}
-		}
-		
-		POL_dummy6 =
-		{
-			allowed = {
-				original_tag = POL
-			}
-			traits = { artillery_manufacturer }
-			modifier = {
-			}
-		
-			ai_will_do = {
-				factor = 0
-			}
-		}
-		
-		POL_dummy7 =
-		{
-			allowed = {
-				original_tag = POL
-			}
-			traits = { naval_manufacturer }
-			modifier = {
-			}
-		
-			ai_will_do = {
-				factor = 0
-			}
-		}
-		
-		POL_dummy8 =
-		{
-			allowed = {
-				original_tag = POL
-			}
-			traits = { infantry_equipment_manufacturer }
-			modifier = {
-			}
-		
-			ai_will_do = {
-				factor = 0
 			}
 		}
 	}

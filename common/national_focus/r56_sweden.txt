@@ -39,18 +39,10 @@ focus_tree = {
 		y = 0
 		cost = 5
 
-		ai_will_do = {
-			factor = 10
-			modifier = {
-				is_historical_focus_on = yes
-				factor = 10
-			}
-		}
-
 		completion_reward = {
 			unlock_decision_category_tooltip = SWE_nationalist_military_garrisons_category
 		}
-		search_filters = { FOCUS_FILTER_POLITICAL }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_HISTORICAL }
 	}
 	focus = {
 		id = SWE_hansson_iii_cabinet
@@ -61,14 +53,6 @@ focus_tree = {
 		x = -1
 		y = 1
 		cost = 5
-
-		ai_will_do = {
-			factor = 5
-			modifier = {
-				is_historical_focus_on = yes
-				factor = 10
-			}
-		}
 
 		available = {
 			has_country_leader = {
@@ -81,7 +65,7 @@ focus_tree = {
 			add_country_leader_trait = SWE_father_of_folkhemmet
 			add_popularity = { ideology = democratic popularity = 0.1 }
 		}
-		search_filters = { FOCUS_FILTER_POLITICAL }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_HISTORICAL }
 	}
 	focus = {
 		id = SWE_gosta_bagge_i_cabinet
@@ -93,23 +77,13 @@ focus_tree = {
 		y = 1
 		cost = 5
 
-		ai_will_do = {
-			factor = 5
-			modifier = {
-				is_historical_focus_on = no
-				factor = 2
-			}
-		}
-
 		completion_reward = {
 			set_party_name = {
 				ideology = democratic
 				name = "Högern"
 				long_name = "Högerpartiet"
 			}			
-			promote_character = {
-				character = SWE_gosta_bagge
-			}
+			promote_character = SWE_gosta_bagge
 			add_popularity = { ideology = democratic popularity = 0.1 }
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
@@ -122,14 +96,6 @@ focus_tree = {
 		x = 1
 		y = 1
 		cost = 5
-
-		ai_will_do = {
-			factor = 5
-			modifier = {
-				is_historical_focus_on = yes
-				factor = 10
-			}
-		}
 
 		available = {
 			has_country_leader = {
@@ -168,14 +134,6 @@ focus_tree = {
 		y = 1
 		cost = 10
 
-		ai_will_do = {
-			factor = 5
-			modifier = {
-				is_historical_focus_on = yes
-				factor = 10
-			}
-		}
-
 		completion_reward = {
 			random_owned_controlled_state = {
 				add_extra_state_shared_building_slots = 1
@@ -198,13 +156,6 @@ focus_tree = {
 		y = 1
 		cost = 5
 
-		ai_will_do = {
-			factor = 5
-			modifier = {
-				is_historical_focus_on = yes
-				factor = 10
-			}
-		}
 
 		completion_reward = {
 			add_political_power = 50
@@ -213,7 +164,7 @@ focus_tree = {
 				remove_idea = SWE_neutrality_idea_sweden
 			}
 		}
-		search_filters = { FOCUS_FILTER_POLITICAL }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_HISTORICAL }
 	}
 	focus = {
 		id = SWE_scandinavian_collaboration
@@ -223,14 +174,6 @@ focus_tree = {
 		x = -1
 		y = 1
 		cost = 5
-
-		ai_will_do = {
-			factor = 3
-			modifier = {
-				is_historical_focus_on = yes
-				factor = 10
-			}
-		}
 
 		completion_reward = {
 			every_other_country = {
@@ -247,7 +190,7 @@ focus_tree = {
 			}
 			add_political_power = 50
 		}
-		search_filters = { FOCUS_FILTER_POLITICAL }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_HISTORICAL }
 	}
 	focus = {
 		id = SWE_fight_unemployment
@@ -258,19 +201,11 @@ focus_tree = {
 		y = 1
 		cost = 10
 
-		ai_will_do = {
-			factor = 3
-			modifier = {
-				is_historical_focus_on = yes
-				factor = 10
-			}
-		}
-
 		completion_reward = {
             unlock_decision_category_tooltip = SWE_fighting_unemployment_category
 			add_political_power = 50
 		}
-		search_filters = { FOCUS_FILTER_POLITICAL }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_HISTORICAL }
 	}
 	focus = {
 		id = SWE_folkhemmet
@@ -282,19 +217,11 @@ focus_tree = {
 		y = 1
 		cost = 5
 
-		ai_will_do = {
-			factor = 3
-			modifier = {
-				is_historical_focus_on = yes
-				factor = 10
-			}
-		}
-
 		completion_reward = {
 			add_political_power = 50
 			add_ideas = SWE_folkhemmet_idea
 		}
-		search_filters = { FOCUS_FILTER_POLITICAL }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_HISTORICAL }
 	}
 	focus = {
 		id = SWE_skanelinjen
@@ -304,14 +231,6 @@ focus_tree = {
 		x = 2
 		y = 1
 		cost = 5
-
-		ai_will_do = {
-			factor = 3
-			modifier = {
-				is_historical_focus_on = yes
-				factor = 10
-			}
-		}
 
 		available = {
 			SWE = {
@@ -347,6 +266,7 @@ focus_tree = {
 				}
 			}
 		}
+		search_filters = { FOCUS_FILTER_HISTORICAL }
 	}
 	focus = {
 		id = SWE_prepare_defensive_militias
@@ -357,18 +277,10 @@ focus_tree = {
 		y = 1
 		cost = 10
 
-		ai_will_do = {
-			factor = 3
-			modifier = {
-				is_historical_focus_on = yes
-				factor = 10
-			}
-		}
-
 		completion_reward = {
 			unlock_decision_category_tooltip = SWE_defensive_militias_category
 		}
-		search_filters = { FOCUS_FILTER_MANPOWER }
+		search_filters = { FOCUS_FILTER_MANPOWER FOCUS_FILTER_HISTORICAL }
 	}
 	focus = {
 		id = SWE_export_based_economy
@@ -378,14 +290,6 @@ focus_tree = {
 		x = -1
 		y = 1
 		cost = 5
-
-		ai_will_do = {
-			factor = 3
-			modifier = {
-				is_historical_focus_on = yes
-				factor = 10
-			}
-		}
 
 		completion_reward = {
 			if = {
@@ -400,7 +304,7 @@ focus_tree = {
 				add_political_power = 120
 			}
 		}
-
+		search_filters = { FOCUS_FILTER_HISTORICAL }
 	}
 	focus = {
 		id = SWE_the_saltsjobaden_agreement
@@ -411,21 +315,13 @@ focus_tree = {
 		y = 2
 		cost = 5
 
-		ai_will_do = {
-			factor = 3
-			modifier = {
-				is_historical_focus_on = yes
-				factor = 10
-			}
-		}
-
 		completion_reward = {
 			swap_ideas = {
 				add_idea = SWE_saltsjobad
 				remove_idea = SWE_folkhemmet_idea
 			}
 		}
-		search_filters = { FOCUS_FILTER_POLITICAL }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_HISTORICAL }
 	}
 	focus = {
 		id = SWE_the_finlands_sak_ar_var_recruitment_drive
@@ -440,14 +336,6 @@ focus_tree = {
 			FIN = {
 				has_defensive_war = yes
 				has_war_with = SOV
-			}
-		}
-
-		ai_will_do = {
-			factor = 3
-			modifier = {
-				is_historical_focus_on = yes
-				factor = 10
 			}
 		}
 
@@ -470,7 +358,7 @@ focus_tree = {
 				can_send_volunteers = yes
 			}
 		}
-		search_filters = { FOCUS_FILTER_POLITICAL }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_HISTORICAL }
 	}
 	focus = {
 		id = SWE_operation_stella_polaris
@@ -484,14 +372,6 @@ focus_tree = {
 		available = {
 			FIN = {
 				has_defensive_War_with = SOV
-			}
-		}
-
-		ai_will_do = {
-			factor = 3
-			modifier = {
-				is_historical_focus_on = yes
-				factor = 0
 			}
 		}
 
@@ -515,18 +395,20 @@ focus_tree = {
 			}
 			else = {
 				add_tech_bonus = {
+					name = SWE_operation_stella_polaris
 					bonus = 1
 					uses = 1
 					category = encryption_tech
 				}
 				add_tech_bonus = {
+					name = SWE_operation_stella_polaris
 					bonus = 1
 					uses = 1
 					category = decryption_tech
 				}
 			}
 		}
-		search_filters = { FOCUS_FILTER_ANNEXATION }
+		search_filters = { FOCUS_FILTER_ANNEXATION FOCUS_FILTER_HISTORICAL }
 	}
 	focus = {
 		id = SWE_intervention_in_the_winter_war
@@ -545,14 +427,6 @@ focus_tree = {
 			}
 			NOT = {
 				has_completed_focus = SWE_gunther_molotov_agreement
-			}
-		}
-
-		ai_will_do = {
-			factor = 3
-			modifier = {
-				is_historical_focus_on = yes
-				factor = 0
 			}
 		}
 
@@ -585,14 +459,7 @@ focus_tree = {
 				country_event = sweden_nap.3
 			}
 		}
-		ai_will_do = {
-			factor = 3
-			modifier = {
-				is_historical_focus_on = yes
-				factor = 10
-			}
-		}
-		search_filters = { FOCUS_FILTER_POLITICAL }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_HISTORICAL }
 	}
 	focus = {
 		id = SWE_neutral_no_more
@@ -605,14 +472,6 @@ focus_tree = {
 		cost = 5
 
 		available_if_capitulated = yes
-
-		ai_will_do = {
-			factor = 3
-			modifier = {
-				is_historical_focus_on = yes
-				factor = 0
-			}
-		}
 
 		available = {
 			is_subject = no
@@ -738,14 +597,8 @@ focus_tree = {
 				}
 			}
 		}
-		ai_will_do = {
-			factor = 3
-			modifier = {
-				is_historical_focus_on = yes
-				factor = 10
-			}
-		}
-		search_filters = { FOCUS_FILTER_MANPOWER }
+
+		search_filters = { FOCUS_FILTER_MANPOWER FOCUS_FILTER_HISTORICAL }
 	}
 	focus = {
 		id = SWE_military_access_for_ensured_safety
@@ -766,13 +619,6 @@ focus_tree = {
 			}
 		}
 
-		ai_will_do = {
-			factor = 3
-			modifier = {
-				is_historical_focus_on = yes
-				factor = 10
-			}
-		}
 		completion_reward = {
 			GER = {
 				country_event = {
@@ -780,6 +626,7 @@ focus_tree = {
 				}
 			}
 		}
+		search_filters = { FOCUS_FILTER_HISTORICAL }
 	}	
 	focus = {
 		id = SWE_gmaskinen
@@ -814,12 +661,14 @@ focus_tree = {
 			}
 			else = {
 				add_tech_bonus = {
+					name = SWE_gmaskinen
 					ahead_reduction = 2
 					bonus = 1
 					uses = 1
 					category = encryption_tech
 				}
 				add_tech_bonus = {
+					name = SWE_gmaskinen
 					ahead_reduction = 2
 					bonus = 1
 					uses = 1
@@ -827,13 +676,7 @@ focus_tree = {
 				}
 			}
 		}
-		ai_will_do = {
-			factor = 3
-			modifier = {
-				is_historical_focus_on = yes
-				factor = 10
-			}
-		}
+		search_filters = { FOCUS_FILTER_HISTORICAL }
 	}
 	focus = {
 		id = SWE_operation_radda_danmark
@@ -874,13 +717,6 @@ focus_tree = {
 				enemy = GER
 			}
 		}
-		ai_will_do = {
-			factor = 3
-			modifier = {
-				is_historical_focus_on = yes
-				factor = 10
-			}
-		}
 		search_filters = { FOCUS_FILTER_ANNEXATION }
 	}
 
@@ -916,14 +752,15 @@ focus_tree = {
 				limit = { has_idea = SWE_neutrality_idea_sweden }
 				remove_ideas = SWE_neutrality_idea_sweden
 			}
-			add_stability = -0.05
-		}
-		ai_will_do = {
-			factor = 10
-			modifier = {
-				is_historical_focus_on = yes
-				factor = 0
+			hidden_effect = {
+				if = {
+					limit = {
+						is_ai = yes
+					}
+					add_ideas = SWE_per_engdahl
+				}
 			}
+			add_stability = -0.05
 		}
 		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_POLITICAL FOCUS_FILTER_MANPOWER }
 	}
@@ -935,14 +772,6 @@ focus_tree = {
 		x = -2
 		y = 0
 		cost = 5
-
-		ai_will_do = {
-			factor = 10
-			modifier = {
-				is_historical_focus_on = yes
-				factor = 0
-			}
-		}
 
 		available_if_capitulated = yes
 
@@ -1039,13 +868,6 @@ focus_tree = {
 				news_event = { id = r56.news_event.906 hours = 12 }
 				}
 		}
-		ai_will_do = {
-			factor = 7
-			modifier = {
-				is_historical_focus_on = yes
-				factor = 0
-			}
-		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
 	}
 	focus = {
@@ -1095,6 +917,15 @@ focus_tree = {
 			add_timed_idea = {
 				idea = SWE_democratic_element_purges
 				days = 90
+			}
+			hidden_effect = {
+				if = {
+					limit = {
+						is_ai = yes
+						has_idea = SWE_per_engdahl
+					}
+					remove_ideas = SWE_per_engdahl
+				}
 			}			
 		}
 	}
@@ -1140,15 +971,25 @@ focus_tree = {
 		}
 
 		completion_reward = {
-			custom_effect_tooltip = SWE_integrate_imperial_territories_tt
-			promote_character = {
-				character = SWE_gustaf_adolf_vi
+			hidden_effect = {
+				set_cosmetic_tag = SWE_swedish_empire_cosmetic
 			}
+			custom_effect_tooltip = SWE_integrate_imperial_territories_tt
+			promote_character = SWE_gustaf_adolf_vi 
 			set_politics = {
 				ruling_party = neutrality
 				elections_allowed = no
 			}
 			remove_ideas = SWE_kungen_gustaf_v_idea
+			hidden_effect = {
+				if = {
+					limit = {
+						is_ai = yes
+						has_idea = SWE_carl_petersen
+					}
+					remove_ideas = SWE_carl_petersen
+				}
+			}
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
 	}
@@ -1205,9 +1046,7 @@ focus_tree = {
 		}
 
 		completion_reward = {
-			promote_character = {
-				character = SWE_gustaf_adolf_v
-			}
+			promote_character = SWE_gustaf_adolf_v
 			set_politics = {
 				ruling_party = neutrality
 				elections_allowed = no
@@ -1495,20 +1334,13 @@ focus_tree = {
 		y = 1
 		cost = 5
 
-		available_if_capitulated = yes
-
 		available = {
-			is_faction_leader = yes
 			is_subject = no
 			NOT = { has_completed_focus = SWE_the_scandinavian_council }
 			any_state = {
 				is_core_of = NOR
 				is_owned_and_controlled_by = SWE
 			}			
-		}
-
-		ai_will_do = {
-			factor = 20 
 		}
 
 		bypass = {
@@ -1530,10 +1362,7 @@ focus_tree = {
 		y = 1
 		cost = 5
 
-		available_if_capitulated = yes
-
 		available = {
-			is_faction_leader = yes
 			is_subject = no
 			NOT = { has_completed_focus = SWE_the_scandinavian_council }
 			any_state = {
@@ -1561,10 +1390,7 @@ focus_tree = {
 		y = 1
 		cost = 5
 
-		available_if_capitulated = yes
-
 		available = {
-			is_faction_leader = yes
 			is_subject = no
 			NOT = { has_completed_focus = SWE_the_scandinavian_council }
 			any_state = {
@@ -1595,33 +1421,7 @@ focus_tree = {
 		available_if_capitulated = yes
 
 		available = {
-			is_faction_leader = yes
 			is_subject = no
-		}
-
-		ai_will_do = {
-			factor = 2
-			modifier = {
-				add = 2
-				any_state = {
-					is_core_of = NOR
-					is_owned_and_controlled_by = SWE
-				}				
-			}
-			modifier = {
-				add = 2
-				any_state = {
-					is_core_of = DEN
-					is_owned_and_controlled_by = SWE
-				}				
-			}
-			modifier = {
-				add = 2
-				any_state = {
-					is_core_of = FIN
-					is_owned_and_controlled_by = SWE
-				}				
-			}						
 		}
 
 		completion_reward = {
@@ -1639,6 +1439,7 @@ focus_tree = {
 						OR = {
 							region = 11
 							region = 191					
+							state = 1027
 						}
 					}
 					add_core_of = SWE
@@ -1650,14 +1451,11 @@ focus_tree = {
 				}
 				every_owned_state = {
 					limit = {
-						region = 6
-						NOT = {
-							state = 56
-							state = 57
-							state = 998
-							state = 58
-							state = 59
-						}						
+						OR = {
+							region = 277
+							state = 1024
+							state = 337				
+						}
 					}
 					add_core_of = SWE
 				}
@@ -1769,12 +1567,6 @@ focus_tree = {
 		x = 3
 		y = 2
 		cost = 5
-
-		ai_will_do = {
-			factor = 10		
-		}
-
-		available_if_capitulated = no
 		
 		completion_reward = {
 			add_ideas = SWE_centralized_command_structure_idea
@@ -1792,16 +1584,6 @@ focus_tree = {
 		x = 1
 		y = 1
 		cost = 7
-		
-
-		ai_will_do = {
-			factor = 10		
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-		search_filters = {  }
 
 		completion_reward = {
 			add_ideas = SWE_joint_air_command_idea
@@ -1877,15 +1659,6 @@ focus_tree = {
 		y = 2
 
 		cost = 5
-		
-
-		ai_will_do = {
-			factor = 10		
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
 
 		completion_reward = {
 			add_ideas = SWE_decentralized_command_structure_idea
@@ -1902,14 +1675,6 @@ focus_tree = {
 		x = -1
 		y = 1
 		cost = 5
-		
-
-		ai_will_do = {
-			factor = 10		
-		}
-
-		search_filters = {  }
-
 		completion_reward = {
 			add_ideas = SWE_north_sea_protector
 		}
@@ -1922,11 +1687,6 @@ focus_tree = {
 		x = 0
 		y = 2
 		cost = 7
-		
-
-		ai_will_do = {
-			factor = 10		
-		}
 
 		completion_reward = {
 
@@ -2017,11 +1777,6 @@ focus_tree = {
 		y = 1
 		cost = 20
 		
-
-		ai_will_do = {
-			factor = 10		
-		}
-
 		available = {
 			if = {
 				limit = { has_dlc = "Man the Guns" }
@@ -2040,12 +1795,6 @@ focus_tree = {
 		select_effect = {
 			add_ideas = SWE_extensive_naval_project_funding
 		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-		search_filters = {  }
-
 		completion_reward = {
 			hidden_effect = {
 				remove_ideas = SWE_extensive_naval_project_funding
@@ -2246,22 +1995,6 @@ focus_tree = {
 		x = 1
 		y = 1
 		cost = 10
-
-		ai_will_do = {
-			factor = 10		
-		}
-
-		available = {
-
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 
 		completion_reward = {
@@ -2367,23 +2100,6 @@ focus_tree = {
 		x = -1
 		y = 1
 		cost = 10
-		
-
-		ai_will_do = {
-			factor = 10		
-		}
-
-		available = {
-
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 
 		completion_reward = {
@@ -2421,23 +2137,6 @@ focus_tree = {
 		x = 0
 		y = 1
 		cost = 5
-		
-
-		ai_will_do = {
-			factor = 10		
-		}
-
-		available = {
-
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
 		search_filters = { FOCUS_FILTER_MANPOWER }
 
 		completion_reward = {
@@ -2452,23 +2151,6 @@ focus_tree = {
 		x = 0
 		y = 1
 		cost = 5
-		
-
-		ai_will_do = {
-			factor = 10		
-		}
-
-		available = {
-
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 
 		completion_reward = {
@@ -2484,21 +2166,9 @@ focus_tree = {
 		y = 4
 		cost = 10
 
-		ai_will_do = {
-			factor = 10		
-		}
-
 		available = {
 			is_in_faction = yes
 		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
 		search_filters = { FOCUS_FILTER_RESEARCH }
 
 		completion_reward = {
@@ -3014,16 +2684,20 @@ focus_tree = {
 			if = {
 				limit = {
 					any_country = {
-						is_faction_leader = yes
 						NOT = {
 							has_government = communism
 						}
-					original_tag = GER
+						is_subject = no
+						is_faction_leader = yes
+						has_capitulated = no
+						original_tag = GER
 					}
 				}
 				random_country = {
-					limit = {
+					limit = {			
+						is_subject = no
 						is_faction_leader = yes
+						has_capitulated = no
 						NOT = {
 							has_government = communism
 						}
@@ -3122,7 +2796,9 @@ focus_tree = {
 			if = {
 				limit = {
 					any_country = {
+						is_subject = no
 						is_faction_leader = yes
+						has_capitulated = no
 						NOT = {
 							has_government = communism
 						}
@@ -3131,7 +2807,9 @@ focus_tree = {
 				}
 				random_country = {
 					limit = {
+						is_subject = no
 						is_faction_leader = yes
+						has_capitulated = no
 						NOT = {
 							has_government = communism
 						}
@@ -3210,9 +2888,24 @@ focus_tree = {
 		available_if_capitulated = yes
 
 		completion_reward = {
-			create_wargoal = {
-				target = GER
-				type = annex_everything
+			every_other_country = {
+				limit = {
+					NOT = { is_in_faction_with = ROOT }
+					NOT = { is_subject_of = ROOT }
+					any_owned_state = {
+						OR = {
+							state = 63
+							state = 62
+						}
+					}
+				}
+				ROOT = {
+					create_wargoal = {
+						target = PREV
+						type = take_state_focus
+						expire = 0
+					}
+				}
 			}
 		}
 		search_filters = { FOCUS_FILTER_ANNEXATION }
@@ -3254,25 +2947,32 @@ focus_tree = {
             r56_script_i_am_sane = yes
             is_subject = no
             any_state = {
-                custom_trigger_tooltip = {
+				custom_trigger_tooltip = {
+					tooltip = SWE_is_in_the_baltic_states_tt
                     region = 37
                     NOT = { state = 188 }
-                }
-                custom_trigger_tooltip = {
-                    tooltip = SWE_is_in_the_baltic_states_tt
-                    NOT = { is_controlled_by_ROOT_or_ally = yes }
-                }
+				}
+				custom_trigger_tooltip = {
+					tooltip = ROOT_is_not_controlled_by_root_or_ally_tt
+					NOT = {
+						is_controlled_by_ROOT_or_ally = yes
+					}
+				}
             }
         }
 
         bypass = {
             all_state = {
-                OR = {
-                    is_controlled_by_ROOT_or_ally = yes
-                    NOT = {
-                        custom_trigger_tooltip = { tooltip = SWE_is_in_the_baltic_states_tt }
-                    }
-                }
+				OR = {
+					NOT = { 
+						custom_trigger_tooltip = {
+							tooltip = SWE_is_in_the_baltic_states_tt
+							region = 37
+							NOT = { state = 188 }
+						}
+					}
+					is_controlled_by_ROOT_or_ally = yes
+				}
             }
         }
 
@@ -3296,9 +2996,6 @@ focus_tree = {
                 }
             }
         }
-		ai_will_do = {
-			factor = 1
-		}
 		search_filters = { FOCUS_FILTER_ANNEXATION }
 	}
 	focus = {
@@ -3341,9 +3038,7 @@ focus_tree = {
                     NOT = { is_in_faction_with = ROOT }
                     NOT = { is_subject_of = ROOT }
                     any_controlled_state = {
-                        AND = {
-                            region = 132
-                        }
+						region = 132
                     }
                 }
                 ROOT = {
@@ -3354,9 +3049,6 @@ focus_tree = {
                 }
             }
         }
-		ai_will_do = {
-			factor = 1
-		}
 		search_filters = { FOCUS_FILTER_ANNEXATION }
 	}
 
@@ -3400,9 +3092,7 @@ focus_tree = {
 		x = -2
 		y = 1
 		cost = 5
-		ai_will_do = {
-			factor = 1
-		}
+
 		available = {
 			has_government = fascism
 			}
@@ -3420,9 +3110,7 @@ focus_tree = {
 		x = 0
 		y = 1
 		cost = 5
-		ai_will_do = {
-			factor = 1
-		}
+
 		available = {
 			has_government = fascism
 			}
@@ -3480,9 +3168,7 @@ focus_tree = {
 		x = 1
 		y = 1
 		cost = 10
-		ai_will_do = {
-			factor = 1
-		}
+
 		available = {
 			has_government = fascism
 			}
@@ -3499,9 +3185,7 @@ focus_tree = {
 		x = 1
 		y = 1
 		cost = 10
-		ai_will_do = {
-			factor = 1
-		}
+
 		available = {
 			has_government = fascism
 			}
@@ -3523,9 +3207,7 @@ focus_tree = {
 		x = -2
 		y = 2
 		cost = 5
-		ai_will_do = {
-			factor = 1
-		}
+
 
 		bypass = {
 			GER = { is_faction_leader = no }
@@ -3561,9 +3243,7 @@ focus_tree = {
         x = 0
         y = 2
         cost = 5
-		ai_will_do = {
-			factor = 6
-		}
+
 		available = {
 			has_government = fascism
 			is_in_faction = no
@@ -3841,10 +3521,6 @@ focus_tree = {
 		x = 0
 		y = 1
 
-		ai_will_do = {
-			factor = 3
-		}
-
 		allow_branch = {
 			OR = {
 				has_game_rule = {
@@ -3889,9 +3565,7 @@ focus_tree = {
 		x = 0
 		y = 1
 		cost = 5
-		ai_will_do = {
-			factor = 1
-		}
+
 
 		bypass = {
 			OR = {
@@ -3928,9 +3602,7 @@ focus_tree = {
 		bypass = {
 			has_war_with = SOV
 		}
-		ai_will_do = {
-			factor = 1
-		}
+
 		will_lead_to_war_with = SOV
 		completion_reward = {
 			add_political_power = 50
@@ -3957,7 +3629,8 @@ focus_tree = {
             r56_script_i_am_sane = yes
             is_subject = no
             any_state = {
-                custom_trigger_tooltip = {
+				custom_trigger_tooltip = {
+					tooltip = SWE_is_in_the_baltic_states_tt
                     region = 37
                     NOT = {
 						state = 188
@@ -3966,22 +3639,34 @@ focus_tree = {
 						state = 815
 						state = 189
 					}
-                }
-                custom_trigger_tooltip = {
-                    tooltip = SWE_is_in_the_baltic_states_tt
-                    NOT = { is_controlled_by_ROOT_or_ally = yes }
-                }
+				}
+				custom_trigger_tooltip = {
+					tooltip = ROOT_is_not_controlled_by_root_or_ally_tt
+					NOT = {
+						is_controlled_by_ROOT_or_ally = yes
+					}
+				}
             }
         }
 
         bypass = {
             all_state = {
-                OR = {
-                    NOT = {
-                        custom_trigger_tooltip = { tooltip = SWE_is_in_the_baltic_states_tt }
-                    }
-                    is_controlled_by_ROOT_or_ally = yes
-                }
+				OR = {
+					NOT = { 
+						custom_trigger_tooltip = {
+							tooltip = SWE_is_in_the_baltic_states_tt
+							region = 37
+							NOT = {
+								state = 188
+								state = 814
+								state = 11
+								state = 815
+								state = 189
+							}
+						}
+					}
+					is_controlled_by_ROOT_or_ally = yes
+				}
             }
         }
 
@@ -3991,16 +3676,14 @@ focus_tree = {
                     NOT = { is_in_faction_with = ROOT }
                     NOT = { is_subject_of = ROOT }
                     any_controlled_state = {
-                        AND = {
-                            region = 37
-                            NOT = {
-								state = 188
-								state = 814
-								state = 11
-								state = 815
-								state = 189
-							}
-                        }
+						region = 37
+						NOT = {
+							state = 188
+							state = 814
+							state = 11
+							state = 815
+							state = 189
+						}
                     }
                 }
                 ROOT = {
@@ -4011,9 +3694,7 @@ focus_tree = {
                 }
             }
         }
-		ai_will_do = {
-			factor = 1
-		}
+
 	}
 
 
@@ -4034,16 +3715,14 @@ focus_tree = {
 
         available_if_capitulated = yes
 
-		ai_will_do = {
-			factor = 10
-			modifier = {
-				is_historical_focus_on = yes
-				factor = 0
-			}
-		}
-
         completion_reward = {
 			unlock_decision_category_tooltip = SWE_nationalist_military_garrisons_category
+			if = {
+				limit = {
+					is_ai = yes
+				}
+				add_ideas = SWE_hilding_hagberg
+			}
             add_timed_idea = {
                 idea = SWE_swedish_communism
                 days = 365
@@ -4072,14 +3751,6 @@ focus_tree = {
         x = 2
         y = 1
         cost = 5
-
-		ai_will_do = {
-			factor = 10
-			modifier = {
-				is_historical_focus_on = yes
-				factor = 0
-			}
-		}
 
         completion_reward = {
                 activate_mission = SWE_worker_revolt_militia
@@ -4129,7 +3800,6 @@ focus_tree = {
 				size = 0.6
 				capital = 138
 				states = { 140 666 968 124 }
-				keep_unit_leaders = { }
 				keep_political_leader = no
 				keep_political_party_members = yes
 			}
@@ -4191,9 +3861,7 @@ focus_tree = {
 				id = infantry
 				value = 40
 			}			
-			promote_character = {
-				character = SWE_sven_linderot
-			}			
+			promote_character = SWE_sven_linderot
 			add_political_power = 50
             add_opinion_modifier = {
                 target = SOV
@@ -4234,14 +3902,6 @@ focus_tree = {
         y = 1
         cost = 5
 
-		ai_will_do = {
-			factor = 10
-			modifier = {
-				is_historical_focus_on = yes
-				factor = 0
-			}
-		}
-
         completion_reward = {
 			unlock_decision_category_tooltip = SWE_unite_the_cells_category
 			swap_ideas = {
@@ -4261,7 +3921,7 @@ focus_tree = {
         y = 1
         cost = 5
 
-        available = { communism > 0.5 }
+        available = { communism > 0.4 }
 
         bypass = { has_government = communism}
         completion_reward = {
@@ -4303,9 +3963,7 @@ focus_tree = {
 				id = infantry
 				value = 40
 			}			
-			promote_character = {
-				character = SWE_nils_flyg
-			}			
+			promote_character = SWE_nils_flyg
 			add_political_power = 50
             add_opinion_modifier = {
                 target = SOV
@@ -4369,6 +4027,10 @@ focus_tree = {
 				has_government = communism 
 				has_civil_war = no
 			}
+		}
+
+		bypass = {
+			is_in_faction_with = SOV
 		}
 
 		completion_reward = {
@@ -4632,14 +4294,6 @@ focus_tree = {
 			has_government = communism
             r56_script_i_am_sane = yes
             is_subject = no
-            any_state = {
-				region = 37
-				NOT = { state = 188 }
-                custom_trigger_tooltip = {
-                    tooltip = SWE_is_in_the_baltic_states_tt
-                    NOT = { is_controlled_by_ROOT_or_ally = yes }
-                }
-            }
         }
 
         bypass = {
@@ -4694,13 +4348,6 @@ focus_tree = {
             build_railway = {
                 level = 2
                 build_only_on_allied = yes
-                controller_priority = {
-                    base = 1
-                    modifier = {
-                        tag = SWE
-                        add = 1
-                    }
-                }
 				path = { 9209 6084 11044 3141 11114 6195 3070 9182 3005 9148 113 6129 11049}
                 start_province = 9209
                 target_province = 11049
@@ -4708,13 +4355,6 @@ focus_tree = {
             build_railway = {
                 level = 1
                 build_only_on_allied = yes
-                controller_priority = {
-                    base = 1
-                    modifier = {
-                        tag = SWE
-                        add = 1
-                    }
-                }
 				path = { 11114 6028 69 }
                 start_province = 11114
                 target_province = 69
@@ -4773,13 +4413,6 @@ focus_tree = {
             build_railway = {
                 level = 2
                 build_only_on_allied = yes
-                controller_priority = {
-                    base = 1
-                    modifier = {
-                        tag = SWE
-                        add = 1
-                    }
-                }
 				path = { 11380 11390 3229 299 329 11215 }
                 start_province = 11390
                 target_province = 329
@@ -4933,6 +4566,7 @@ focus_tree = {
 		available = {
 			is_subject = no
 			NOT = { is_in_faction_with = GER }
+			GER = { NOT = { has_government = communism } }
 		}
 
         completion_reward = {
@@ -4954,6 +4588,7 @@ focus_tree = {
 		available = {
 			is_subject = no
 			NOT = { is_in_faction_with = FRA }
+			FRA = { NOT = { has_government = communism } }
 		}
 
         completion_reward = {
@@ -4975,6 +4610,7 @@ focus_tree = {
 		available = {
 			is_subject = no
 			NOT = { is_in_faction_with = ENG }
+			ENG = { NOT = { has_government = communism } }
 		}
 
         completion_reward = {
@@ -5042,7 +4678,7 @@ focus_tree = {
 
     focus = {
         id = SWE_influence_our_neighbours
-        icon = GFX_goal_NOR_nordic_alliance
+        icon = GFX_goal_SWE_communist_neighbours
         prerequisite = { focus = SWE_nordic_collaboration }
         mutually_exclusive = { }
         relative_position_id = SWE_nordic_collaboration
@@ -5059,7 +4695,7 @@ focus_tree = {
 
     focus = {
         id = SWE_alliance_with_finland
-        icon = GFX_goal_SWE_abo_conference
+        icon = GFX_focus_SWE_finnish_communists
         prerequisite = { focus = SWE_nordic_collaboration }
         mutually_exclusive = { }
         relative_position_id = SWE_nordic_collaboration
@@ -5275,6 +4911,7 @@ focus_tree = {
 			}
 			add_ideas = SWE_fortify_our_borders
 		}
+		search_filters = { FOCUS_FILTER_HISTORICAL }
 	}
 	focus = {
 		id = SWE_air_defence_fortifications
@@ -5465,7 +5102,7 @@ focus_tree = {
 				}
 			}
 		}
-		search_filters = { FOCUS_FILTER_INDUSTRY }
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_HISTORICAL }
 	}
 	focus = {
 		id = SWE_rationing_r56
@@ -5497,10 +5134,8 @@ focus_tree = {
 			}
 			add_ideas = SWE_ransonering
 		}
-		ai_will_do = {
-			factor = 1
-		}
-		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_HISTORICAL }
 	}
 	focus = {
 		id = SWE_recycling
@@ -5515,10 +5150,8 @@ focus_tree = {
 		completion_reward = {
 			add_ideas = SWE_recycling_idea
 		}
-		ai_will_do = {
-			factor = 1
-		}
-		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_HISTORICAL }
 	}
 	focus = {
 		id = SWE_lottorna
@@ -5533,10 +5166,8 @@ focus_tree = {
 		completion_reward = {
 			add_ideas = SWE_lottorna_idea
 		}
-		ai_will_do = {
-				factor = 15
-				}
-		search_filters = { FOCUS_FILTER_MANPOWER }
+
+		search_filters = { FOCUS_FILTER_MANPOWER FOCUS_FILTER_HISTORICAL }
 	}
 	focus = {
 		id = SWE_hemvarnet_r56
@@ -5552,10 +5183,8 @@ focus_tree = {
 		completion_reward = {
 			add_ideas = SWE_hemvarnet_idea
 		}
-		ai_will_do = {
-			factor = 10
-		}
-		search_filters = { FOCUS_FILTER_MANPOWER }
+
+		search_filters = { FOCUS_FILTER_MANPOWER FOCUS_FILTER_HISTORICAL }
 	}
 	focus = {
 		id = SWE_the_swedish_defence_research_agency
@@ -5582,7 +5211,7 @@ focus_tree = {
 				category = electronics
 			}
 		}
-		search_filters = { FOCUS_FILTER_RESEARCH }
+		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_HISTORICAL }
 	}
 	focus = {
 		id = SWE_the_swedish_nuclear_program
@@ -5601,787 +5230,10 @@ focus_tree = {
 				category = nuclear
 			}
 		}
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				factor = 0.25
-				always = yes
-			}
-		}
-		search_filters = { FOCUS_FILTER_RESEARCH }
+		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_HISTORICAL }
 
 	}
-	focus = {
-		id = SWE_swedish_army_staff
-		icon = GFX_goal_SWE_coa_army
-		relative_position_id = SWE_swedish_defence_act
-		x = 8
-		y = 0
-		cost = 5
 
-		completion_reward = {
-			army_experience = 25
-			add_doctrine_cost_reduction = {
-				name = land_doc_bonus
-				cost_reduction = 0.5
-				uses = 1
-				category = land_doctrine
-			}
-		}
-		search_filters = { FOCUS_FILTER_RESEARCH }
-	}
-	focus = {
-		id = SWE_mechanization_program
-		icon = GFX_goal_generic_small_arms
-		prerequisite = { focus = SWE_swedish_army_staff }
-		relative_position_id = SWE_swedish_army_staff
-		x = 4
-		y = 1
-		cost = 10
-
-		
-
-		ai_will_do = {
-			factor = 10		
-		}
-
-		available = {
-			arms_factory > 14
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = no
-		continue_if_invalid = yes
-		available_if_capitulated = no
-		search_filters = {  }
-
-		completion_reward = {
-			swap_ideas = {
-			 	remove_idea = SWE_severe_lack_of_ammunition
-			 	add_idea = SWE_standardized_equipment
-			 }
-			add_tech_bonus = {
-				name = SWE_standardize_equipment
-				bonus = 1
-				uses = 1
-				category = infantry_weapons
-			}
-		}
-	}
-
-	focus = {
-		id = r56_SWE_aquire_modern_panzers
-		icon = GFX_focus_generic_tankette
-		x = 1
-		y = 1
-
-		cost = 10
-		prerequisite = { focus = SWE_nationalize_landsverk focus = SWE_respect_landsverk_independence }
-		relative_position_id = SWE_nationalize_landsverk
-
-
-		ai_will_do = {
-			factor = 10		
-		}
-
-		available = {
-
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH FOCUS_FILTER_FOLKHEMMET }
-
-		completion_reward = {
-			add_tech_bonus = {
-				bonus = 0.75
-				uses = 1
-				category = armor # optional 
-				# tecnology  = technology_id # optional
-			}
-
-			SWE_folkhemmet_big_swap = yes
-		}
-	}
-
-	focus = {
-		id = SWE_bicycle_infantry_regiments
-		icon = GFX_focus_SWE_bicycle 
-		x = 0
-		y = 1
-
-		cost = 5
-		prerequisite = { focus = SWE_hire_scania_vabis }
-		relative_position_id = SWE_hire_scania_vabis
-
-		ai_will_do = {
-			factor = 10		
-		}
-
-		available = {
-
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-		search_filters = {  }
-
-		completion_reward = {
-			set_technology = { bicycle_infantry = 1 popup = no }
-			mio:SWE_husqvarna_organization = {
-				add_mio_funds = 750
-			}
-			custom_effect_tooltip = SWE_bicycle_infantry_tt
-			hidden_effect = {
-				division_template = {
-					name = "Cykelinfanteri"
-					priority = 2
-					division_names_group = SWE_CAV_01
-					regiments = {
-						bicycle_battalion = { x = 0 y = 0 }
-						bicycle_battalion = { x = 0 y = 1 }
-			
-						bicycle_battalion = { x = 1 y = 0 }
-						bicycle_battalion = { x = 1 y = 1 }
-					}
-				}
-				random_owned_controlled_state = {
-					limit = { ROOT = { has_full_control_of_state = PREV } }
-					prioritize = { 141 }
-					create_unit = {
-						division = "name = \"Cykelinfanteri\" division_template = \"Cykelinfanteri\" start_experience_factor = 1.0" 
-						owner = SWE
-					}
-				}
-				random_owned_controlled_state = {
-					limit = { ROOT = { has_full_control_of_state = PREV } }
-					prioritize = { 124 }
-					create_unit = {
-						division = "name = \"Cykelinfanteri\" division_template = \"Cykelinfanteri\" start_experience_factor = 1.0" 
-						owner = SWE
-					}
-				}
-				random_owned_controlled_state = {
-					limit = { ROOT = { has_full_control_of_state = PREV } }
-					prioritize = { 140 }
-					create_unit = {
-						division = "name = \"Cykelinfanteri\" division_template = \"Cykelinfanteri\" start_experience_factor = 1.0" 
-						owner = SWE
-					}
-				}
-				random_owned_controlled_state = {
-					limit = { ROOT = { has_full_control_of_state = PREV } }
-					prioritize = { 138 }
-					create_unit = {
-						division = "name = \"Cykelinfanteri\" division_template = \"Cykelinfanteri\" start_experience_factor = 1.0" 
-						owner = SWE
-					}
-				}
-				random_owned_controlled_state = {
-					limit = { ROOT = { has_full_control_of_state = PREV } }
-					prioritize = { 1029 }
-					create_unit = {
-						division = "name = \"Cykelinfanteri\" division_template = \"Cykelinfanteri\" start_experience_factor = 1.0" 
-						owner = SWE
-					}
-				}
-				random_owned_controlled_state = {
-					limit = { ROOT = { has_full_control_of_state = PREV } }
-					prioritize = { 38 }
-					create_unit = {
-						division = "name = \"Cykelinfanteri\" division_template = \"Cykelinfanteri\" start_experience_factor = 1.0" 
-						owner = SWE
-					}
-				}
-
-			}
-		}
-	}
-    focus = {
-		id = r56_SWE_lynx_winter_armored_cars
-		icon = GFX_focus_SWE_lynx_armored_car 
-		x = 0
-		y = 1
-
-		cost = 10
-		prerequisite = { focus = r56_SWE_aquire_modern_panzers focus = SWE_bicycle_infantry_regiments }
-		relative_position_id = r56_SWE_aquire_modern_panzers
-		mutually_exclusive = { focus = SWE_kp_bill }
-
-		ai_will_do = {
-			factor = 10		
-		}
-
-		available = {
-
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-		search_filters = { FOCUS_FILTER_RESEARCH }
-
-		completion_reward = {
-			if = {
-				limit = {
-					has_dlc = "La Resistance"
-				}
-
-				set_technology = {
-					SWE_lynx_armored_car = 1
-					popup = yes
-				}
-				custom_effect_tooltip = SWE_lynx_armored_car_tt
-				custom_effect_tooltip = SWE_lynx_armored_car_recon_company_tt
-				add_tech_bonus = {
-					bonus = 1
-					ahead_reduction = 1
-					uses = 1
-					category = cat_armored_cars # optional 
-					# technology  = technology_id # optional
-				}
-			}
-			else = {
-				add_tech_bonus = {
-					name = SWE_lynx_winter_armored_cars
-					bonus = 0.6
-					uses = 2
-					category = support_tech
-
-				}
-
-				add_doctrine_cost_reduction = {
-					name = SWE_lynx_winter_armored_cars
-					cost_reduction = 0.5
-					uses = 1
-					category = land_doctrine
-				}
-			}
-
-			mio:SWE_scania_vabis_organization = {
-				add_mio_funds = 1000
-			}
-
-			mio:SWE_volvo_organization= {
-				add_mio_funds = 1000
-			}
-		}
-	}
-
-	focus = {
-		id = r56_SWE_kp_bill
-		icon = GFX_goal_generic_army_motorized  
-		x = 0
-		y = 1
-
-		cost = 10
-		prerequisite = { focus = r56_SWE_aquire_modern_panzers focus = SWE_bicycle_infantry_regiments }
-		relative_position_id = SWE_bicycle_infantry_regiments
-		mutually_exclusive = { focus = r56_SWE_lynx_winter_armored_cars }
-
-		ai_will_do = {
-			factor = 10		
-		}
-
-		available = {
-
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-		search_filters = { FOCUS_FILTER_RESEARCH }
-
-		completion_reward = {
-			add_tech_bonus = {
-				bonus = 1.5
-				uses = 1
-				category = cat_mechanized_equipment # optional 
-				# technology  = technology_id # optional
-			}
-			add_tech_bonus = {
-				bonus = 0.5
-				uses = 1
-				technology  = motorized_rocket_unit # optional
-			}
-			
-		}
-	}	
-	focus = {
-		id = SWE_fund_carl_gustafs_gevarsfaktori
-		icon = GFX_goal_generic_small_arms
-		prerequisite = { focus = SWE_swedish_army_staff }
-		relative_position_id = SWE_swedish_army_staff
-		x = -4
-		y = 1
-		cost = 10
-
-		completion_reward = {
-			if = {
-				limit = {
-					controls_state = 141
-				}
-				141 = {
-					add_extra_state_shared_building_slots = 1
-					add_building_construction = {
-						type = arms_factory
-						level = 1
-						instant_build = yes
-					}
-				}
-			}
-			add_tech_bonus = {
-				name = infantry_weapons_bonus
-				bonus = 1
-				uses = 2
-				category = infantry_weapons
-			}
-		}
-		search_filters = { FOCUS_FILTER_RESEARCH }
-	}
-	focus = {
-		id = SWE_nationalize_landsverk
-		icon = GFX_goal_swedish_tank
-		prerequisite = { focus = SWE_mechanization_program }
-		mutually_exclusive = { focus = SWE_respect_landsverk_independence }
-		relative_position_id = SWE_mechanization_program
-		x = -2
-		y = 1
-		cost = 10
-
-		available = {
-
-		}
-
-		completion_reward = {
-			add_tech_bonus = {
-				name = armor_bonus
-				bonus = 1
-				uses = 2
-				category = armor
-			}
-			if = {
-				limit = {
-					has_dlc = "La Resistance"
-				}
-				add_tech_bonus = {
-					name = armor_bonus
-					bonus = 1
-					uses = 1
-					category = armored_cars_tech
-				}
-			}
-			if = {
-				limit = {
-					has_dlc = "No Step Back"
-				}
-				if = {
-					limit = {
-						NOT = { has_tech = improved_light_tank_chassis }
-					}
-					custom_effect_tooltip = SWE_contract_landsverk_strv_m38_tt
-				}
-				else = {
-					if = {
-						limit = {
-							has_tech = centimetric_radar
-						}
-						create_equipment_variant = {
-							name = "Strv m/38"
-							type = light_tank_chassis_2
-							parent_version = 0
-							modules = {
-								main_armament_slot = tank_high_velocity_cannon		# Bofors 37mm
-								turret_type_slot = tank_light_two_man_tank_turret
-								suspension_type_slot = tank_torsion_bar_suspension
-								armor_type_slot = tank_welded_armor
-								engine_type_slot = tank_gasoline_engine
-								special_type_slot_1 = tank_radio_3
-								special_type_slot_2 = sloped_armor
-							}
-							upgrades = {
-								tank_nsb_engine_upgrade = 4
-								tank_nsb_armor_upgrade = 2
-							}
-						}
-					}
-					else_if = {
-						limit = {
-							has_tech = decimetric_radar
-						}
-						create_equipment_variant = {
-							name = "Strv m/38"
-							type = light_tank_chassis_2
-							parent_version = 0
-							modules = {
-								main_armament_slot = tank_high_velocity_cannon		# Bofors 37mm
-								turret_type_slot = tank_light_two_man_tank_turret
-								suspension_type_slot = tank_torsion_bar_suspension
-								armor_type_slot = tank_welded_armor
-								engine_type_slot = tank_gasoline_engine
-								special_type_slot_1 = tank_radio_2
-								special_type_slot_2 = sloped_armor
-							}
-							upgrades = {
-								tank_nsb_engine_upgrade = 4
-								tank_nsb_armor_upgrade = 2
-							}
-						}
-					}
-					else_if = {
-						limit = {
-							has_tech = radio
-						}
-						create_equipment_variant = {
-							name = "Strv m/38"
-							type = light_tank_chassis_2
-							parent_version = 0
-							modules = {
-								main_armament_slot = tank_high_velocity_cannon		# Bofors 37mm
-								turret_type_slot = tank_light_two_man_tank_turret
-								suspension_type_slot = tank_torsion_bar_suspension
-								armor_type_slot = tank_welded_armor
-								engine_type_slot = tank_gasoline_engine
-								special_type_slot_1 = tank_radio_1
-								special_type_slot_2 = sloped_armor
-							}
-							upgrades = {
-								tank_nsb_engine_upgrade = 4
-								tank_nsb_armor_upgrade = 2
-							}
-						}
-					}
-					else = {
-						create_equipment_variant = {
-							name = "Strv m/38"
-							type = light_tank_chassis_2
-							parent_version = 0
-							modules = {
-								main_armament_slot = tank_high_velocity_cannon		# Bofors 37mm
-								turret_type_slot = tank_light_two_man_tank_turret
-								suspension_type_slot = tank_torsion_bar_suspension
-								armor_type_slot = tank_welded_armor
-								engine_type_slot = tank_gasoline_engine
-								special_type_slot_1 = sloped_armor
-							}
-							upgrades = {
-								tank_nsb_engine_upgrade = 4
-								tank_nsb_armor_upgrade = 2
-							}
-						}
-					}
-				}
-			}
-		}
-		search_filters = { FOCUS_FILTER_RESEARCH }
-	}
-	focus = {
-		id = SWE_respect_landsverk_independence
-		icon = GFX_goal_swedish_tank
-		prerequisite = { focus = SWE_mechanization_program }
-		mutually_exclusive = { focus = SWE_nationalize_landsverk }
-		relative_position_id = SWE_mechanization_program
-		x = 0
-		y = 1
-		cost = 10
-
-		available = {
-
-		}
-
-		completion_reward = {
-			add_tech_bonus = {
-				name = armor_bonus
-				bonus = 1
-				uses = 2
-				category = armor
-			}
-			if = {
-				limit = {
-					has_dlc = "La Resistance"
-				}
-				add_tech_bonus = {
-					name = armor_bonus
-					bonus = 1
-					uses = 1
-					category = armored_cars_tech
-				}
-			}
-			custom_effect_tooltip = available_designer
-			show_ideas_tooltip = SWE_ab_landsverk
-
-			if = {
-				limit = {
-					has_dlc = "No Step Back"
-				}
-				if = {
-					limit = {
-						NOT = { has_tech = improved_light_tank_chassis }
-					}
-					custom_effect_tooltip = SWE_nationalize_landsverk_strv_m38_tt
-				}
-				else = {
-					if = {
-						limit = {
-							has_tech = centimetric_radar
-						}
-						create_equipment_variant = {
-							name = "Strv m/38"
-							type = light_tank_chassis_2
-							parent_version = 0
-							modules = {
-								main_armament_slot = tank_high_velocity_cannon		# Bofors 37mm
-								turret_type_slot = tank_light_two_man_tank_turret
-								suspension_type_slot = tank_torsion_bar_suspension
-								armor_type_slot = tank_welded_armor
-								engine_type_slot = tank_gasoline_engine
-								special_type_slot_1 = tank_radio_3
-								special_type_slot_2 = sloped_armor
-							}
-							upgrades = {
-								tank_nsb_engine_upgrade = 4
-								tank_nsb_armor_upgrade = 2
-							}
-						}
-					}
-					else_if = {
-						limit = {
-							has_tech = decimetric_radar
-						}
-						create_equipment_variant = {
-							name = "Strv m/38"
-							type = light_tank_chassis_2
-							parent_version = 0
-							modules = {
-								main_armament_slot = tank_high_velocity_cannon		# Bofors 37mm
-								turret_type_slot = tank_light_two_man_tank_turret
-								suspension_type_slot = tank_torsion_bar_suspension
-								armor_type_slot = tank_welded_armor
-								engine_type_slot = tank_gasoline_engine
-								special_type_slot_1 = tank_radio_2
-								special_type_slot_2 = sloped_armor
-							}
-							upgrades = {
-								tank_nsb_engine_upgrade = 4
-								tank_nsb_armor_upgrade = 2
-							}
-						}
-					}
-					else_if = {
-						limit = {
-							has_tech = radio
-						}
-						create_equipment_variant = {
-							name = "Strv m/38"
-							type = light_tank_chassis_2
-							parent_version = 0
-							modules = {
-								main_armament_slot = tank_high_velocity_cannon		# Bofors 37mm
-								turret_type_slot = tank_light_two_man_tank_turret
-								suspension_type_slot = tank_torsion_bar_suspension
-								armor_type_slot = tank_welded_armor
-								engine_type_slot = tank_gasoline_engine
-								special_type_slot_1 = tank_radio_1
-								special_type_slot_2 = sloped_armor
-							}
-							upgrades = {
-								tank_nsb_engine_upgrade = 4
-								tank_nsb_armor_upgrade = 2
-							}
-						}
-					}
-					else = {
-						create_equipment_variant = {
-							name = "Strv m/38"
-							type = light_tank_chassis_2
-							parent_version = 0
-							modules = {
-								main_armament_slot = tank_high_velocity_cannon		# Bofors 37mm
-								turret_type_slot = tank_light_two_man_tank_turret
-								suspension_type_slot = tank_torsion_bar_suspension
-								armor_type_slot = tank_welded_armor
-								engine_type_slot = tank_gasoline_engine
-								special_type_slot_1 = sloped_armor
-							}
-							upgrades = {
-								tank_nsb_engine_upgrade = 4
-								tank_nsb_armor_upgrade = 2
-							}
-						}
-					}
-				}
-			}
-		}
-		search_filters = { FOCUS_FILTER_RESEARCH }
-	}	
-	focus = {
-		id = SWE_winter_equipment
-		icon = GFX_goal_generic_cold_war
-		prerequisite = { focus = SWE_fund_carl_gustafs_gevarsfaktori }
-		relative_position_id = SWE_fund_carl_gustafs_gevarsfaktori
-		x = 1
-		y = 1
-		cost = 10
-
-		completion_reward = {
-			add_ideas = SWE_vintertraning
-            add_tech_bonus = {
-                name = infantry_artillery_bonus
-                bonus = 1
-                uses = 2
-                category = winter_clothing_tech
-            }
-			add_tech_bonus = {
-				name = support_bonus
-				bonus = 1
-				uses = 1
-				category = support_tech
-			}
-		}
-		search_filters = { FOCUS_FILTER_RESEARCH }
-	}
-	focus = {
-		id = SWE_hire_scania_vabis
-		icon = GFX_goal_generic_modernizing_the_cavalry
-		prerequisite = { focus = SWE_fund_carl_gustafs_gevarsfaktori }
-		prerequisite = { focus = SWE_mechanization_program }
-		relative_position_id = SWE_fund_carl_gustafs_gevarsfaktori
-		x = 4
-		y = 1
-		cost = 10
-
-		available_if_capitulated = yes
-
-		completion_reward = {
-			add_tech_bonus = {
-				bonus = 1
-				uses = 2
-				category = motorized_equipment
-			}
-			mio:SWE_scania_vabis_organization = {
-				add_mio_funds = 1000
-			}
-
-			mio:SWE_volvo_organization = {
-				add_mio_funds = 2000
-			}
-		}
-		search_filters = { FOCUS_FILTER_RESEARCH }
-	}
-	focus = {
-		id = SWE_modern_command_structure
-		icon = GFX_goal_CAN_WCMC
-		prerequisite = { focus = SWE_winter_equipment }
-		relative_position_id = SWE_winter_equipment
-		x = -1
-		y = 1
-		cost = 5
-
-		available_if_capitulated = yes
-
-		completion_reward = {
-			army_experience = 10
-			add_doctrine_cost_reduction = {
-				name = land_doc_bonus2
-				cost_reduction = 0.5
-				uses = 1
-				category = land_doctrine
-			}
-		}
-		search_filters = { FOCUS_FILTER_RESEARCH }
-	}
-	focus = {
-		id = SWE_royal_military_academy
-		icon = GFX_goal_generic_army_doctrines
-		prerequisite = { focus = SWE_winter_equipment }
-		relative_position_id = SWE_winter_equipment
-		x = 1
-		y = 1
-		cost = 5
-
-		available_if_capitulated = yes
-
-		completion_reward = {
-			army_experience = 10
-			every_army_leader = {
-                add_logistics = 1
-            }
-			swap_ideas = {
-				remove_idea = SWE_vintertraning
-				add_idea = SWE_vintertraning2
-			}
-			add_doctrine_cost_reduction = {
-				name = land_doc_bonus3
-				cost_reduction = 0.5
-				uses = 1
-				category = land_doctrine
-			}
-
-		}
-		search_filters = { FOCUS_FILTER_RESEARCH }
-	}
-	focus = {
-		id = SWE_artilleriskjutskolan
-		icon = GFX_goal_generic_army_artillery
-		prerequisite = { focus = SWE_modern_command_structure }
-		prerequisite = { focus = SWE_royal_military_academy }
-		relative_position_id = SWE_modern_command_structure
-		x = 0
-		y = 1
-		cost = 10
-		completion_reward = {
-			add_tech_bonus = {
-				name = infantry_artillery_bonus
-				bonus = 1
-				uses = 2
-				category = artillery
-			}
-		}
-		search_filters = { FOCUS_FILTER_RESEARCH }
-	}
-	focus = {
-		id = SWE_armens_jagarskola
-		icon = GFX_goal_generic_special_forces
-		prerequisite = { focus = SWE_modern_command_structure }
-		prerequisite = { focus = SWE_royal_military_academy }
-		relative_position_id = SWE_modern_command_structure
-		x = 2
-		y = 1
-		cost = 10
-
-		completion_reward = {
-			add_tech_bonus = {
-				bonus = 1.5
-				uses = 2
-				category = r56_jaeger_infantry_tech
-			}
-			#add_ideas = SWE_svenska_jagare_idea
-			set_technology = { SWE_svenska_jagare = 1 }
-			custom_effect_tooltip = SWE_armens_jagarskola_tt
-		}
-		search_filters = { FOCUS_FILTER_RESEARCH }
-	}
 ####  ___ _   _ ____  _   _ ____ _____ ______   __
 #### |_ _| \ | |  _ \| | | / ___|_   _|  _ \ \ / /
 ####  | ||  \| | | | | | | \___ \ | | | |_) \ V /
@@ -6392,7 +5244,7 @@ focus_tree = {
 	focus = {
 		id = SWE_state_of_disarmament
 		icon = GFX_goal_generic_gun_purchase
-		relative_position_id = SWE_swedish_army_staff
+		relative_position_id = SWE_swedish_defence_act
 		x = 13
 		y = 0
 		cost = 10
@@ -6412,14 +5264,7 @@ focus_tree = {
 				add_extra_state_shared_building_slots = 1
 			}			
 		}
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				factor = 0.25
-				always = yes
-			}
-		}
-		search_filters = { FOCUS_FILTER_POLITICAL }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_HISTORICAL }
 	}
     focus = {
         id = SWE_swedish_industrial_reinvigoration
@@ -6427,7 +5272,7 @@ focus_tree = {
         prerequisite = { focus = SWE_state_of_disarmament }
         mutually_exclusive = { }
 		relative_position_id = SWE_state_of_disarmament
-        x = 6
+        x = 9
         y = 1
         cost = 10
 
@@ -6440,7 +5285,7 @@ focus_tree = {
             }
             add_ideas = SWE_industrial_reinvigoration
         }
-		search_filters = { FOCUS_FILTER_INDUSTRY }
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_HISTORICAL }
     }
 	focus = {
 		id = SWE_expand_husqvarnas_factories
@@ -6450,7 +5295,7 @@ focus_tree = {
 		relative_position_id = SWE_swedish_industrial_reinvigoration
         x = -1
         y = 1
-        cost = 10
+        cost = 8
 
         completion_reward = {
 			random_owned_controlled_state = {
@@ -6468,14 +5313,14 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_INDUSTRY }
     }
 	focus = {
-		id = SWE_oresundsvarvet
+		id = SWE_gotaverken_shipyards
         icon = GFX_goal_generic_construct_naval_dockyard
         prerequisite = { focus = SWE_expand_husqvarnas_factories }
         mutually_exclusive = { }
 		relative_position_id = SWE_expand_husqvarnas_factories
         x = 0
         y = 1
-        cost = 10
+        cost = 5
 
 		completion_reward = {
 			navy_experience = 25
@@ -6488,7 +5333,7 @@ focus_tree = {
                     }
 					is_core_of = ROOT					
 				}				
-				prioritize = { 138 }
+				prioritize = { 140 }
 				add_extra_state_shared_building_slots = 3
 				add_building_construction = {
 					type = dockyard
@@ -6507,7 +5352,7 @@ focus_tree = {
 		relative_position_id = SWE_swedish_industrial_reinvigoration
         x = 1
         y = 1
-        cost = 10
+        cost = 8
 		bypass = {
 			custom_trigger_tooltip = {
 				tooltip = infrastructure_effort_tt
@@ -6575,28 +5420,16 @@ focus_tree = {
 	    id = SWE_swedish_state_railways
 	    icon = GFX_goal_generic_train
 	    prerequisite = { focus = SWE_infrastructure_development }
-	    mutually_exclusive = { }
 	    relative_position_id = SWE_infrastructure_development
 	    x = 0
 	    y = 1
 	    cost = 10
-
-	    available_if_capitulated = no
-
-	    bypass = {}
 
 	    completion_reward = {
 	        add_ideas = SWE_swedish_state_railways_idea
 	        build_railway = {
 	            level = 1
 	            build_only_on_allied = yes
-	            controller_priority = {
-	                base = 1
-	                modifier = {
-	                    tag = SWE
-	                    add = 1
-	                }
-	            }
 	            path = { 6050 9149 3182 11091 9117 49 9051 125 9035 3108 205 130 6063 11185 118 11067 6132 }
 	            start_province = 6050
 	            target_province = 6132
@@ -6604,13 +5437,6 @@ focus_tree = {
 	        build_railway = {
 	            level = 1
 	            build_only_on_allied = yes
-	            controller_priority = {
-	                base = 1
-	                modifier = {
-	                    tag = SWE
-	                    add = 1
-	                }
-	            }
 	            path = { 9093 6200 3138 }
 	            start_province = 9093
 	            target_province = 3138
@@ -6618,13 +5444,6 @@ focus_tree = {
 	        build_railway = {
 	            level = 1
 	            build_only_on_allied = yes
-	            controller_priority = {
-	                base = 1
-	                modifier = {
-	                    tag = SWE
-	                    add = 1
-	                }
-	            }
 	            path = { 9220 6161 6083 9108 3104 9186 9226 11155 3095 101 }
 	            start_province = 9220
 	            target_province = 101
@@ -6740,7 +5559,7 @@ focus_tree = {
 		relative_position_id = SWE_swedish_industrial_reinvigoration
 		x = 4
 		y = 1
-		cost = 10
+		cost = 8
 
 		completion_reward = {
 			random_owned_controlled_state = {
@@ -6756,7 +5575,7 @@ focus_tree = {
                 }
             }
 		}
-		search_filters = { FOCUS_FILTER_INDUSTRY }
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_HISTORICAL }
 	}
  	focus = {
 		id = SWE_sako
@@ -6765,7 +5584,7 @@ focus_tree = {
 		relative_position_id = SWE_refurbish_duved
 		x = -1
 		y = 1
-		cost = 10
+		cost = 5
 
 		available = {
 			141 = { controls_or_subject_of = yes }
@@ -6807,7 +5626,7 @@ focus_tree = {
                 }
             }
 		}
-		search_filters = { FOCUS_FILTER_ALUMINIUM }
+		search_filters = { FOCUS_FILTER_ALUMINIUM FOCUS_FILTER_HISTORICAL }
 	}
  	focus = {
 		id = SWE_kiruna_mine
@@ -6816,7 +5635,7 @@ focus_tree = {
 		relative_position_id = SWE_refurbish_duved
 		x = 1
 		y = 1
-		cost = 10
+		cost = 5
 
 		available = {
 			666 = { controls_or_subject_of = yes }
@@ -6858,7 +5677,7 @@ focus_tree = {
                 }
             }
 		}
-		search_filters = { FOCUS_FILTER_STEEL }
+		search_filters = { FOCUS_FILTER_STEEL FOCUS_FILTER_HISTORICAL }
 	}
  	focus = {
 		id = SWE_resource_utilization
@@ -6893,7 +5712,7 @@ focus_tree = {
 				}
 			}
 		}
-		search_filters = { FOCUS_FILTER_ALUMINIUM FOCUS_FILTER_STEEL }
+		search_filters = { FOCUS_FILTER_ALUMINIUM FOCUS_FILTER_STEEL FOCUS_FILTER_HISTORICAL }
 	}
  	focus = {
 		id = SWE_industrial_research_program
@@ -6907,6 +5726,7 @@ focus_tree = {
 		completion_reward = {
 			add_research_slot = 1
 		}
+		search_filters = { FOCUS_FILTER_HISTORICAL FOCUS_FILTER_RESEARCH }
 	}	
 	focus = {
 		id = SWE_begin_initial_rearmament
@@ -6945,14 +5765,14 @@ focus_tree = {
 				}
 			}
 		}
-		search_filters = { FOCUS_FILTER_RESEARCH }
+		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_HISTORICAL }
 	}
 	focus = {
 		id = SWE_expand_airfleet_capabilities
 		icon = GFX_goal_generic_build_airforce
 		relative_position_id = SWE_begin_initial_rearmament
 		prerequisite = { focus = SWE_begin_initial_rearmament }
-		x = 2
+		x = 4
 		y = 1
 		cost = 10
 
@@ -6986,8 +5806,90 @@ focus_tree = {
 				}
 			}
 		}
+		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_HISTORICAL }
+	}
+	focus = {
+		id = SWE_northern_airfields
+		icon = GFX_goal_SWE_northern_airfields
+		relative_position_id = SWE_expand_airfleet_capabilities
+		prerequisite = { focus = SWE_expand_airfleet_capabilities }
+		x = -1
+		y = 1
+		cost = 3
+
+		completion_reward = {
+			random_owned_controlled_state = {
+				prioritize = {
+					666
+				}				
+				limit = {
+					is_core_of = ROOT					
+				}				
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = air_base
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				prioritize = {
+					1029
+				}				
+				limit = {
+					is_core_of = ROOT					
+				}				
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = air_base
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
 		search_filters = { FOCUS_FILTER_RESEARCH }
-	}		
+	}
+	focus = {
+		id = SWE_southern_airfields
+		icon = GFX_goal_SWE_southern_airfields
+		relative_position_id = SWE_expand_airfleet_capabilities
+		prerequisite = { focus = SWE_expand_airfleet_capabilities }
+		x = 1
+		y = 1
+		cost = 3
+
+		completion_reward = {
+			random_owned_controlled_state = {
+				prioritize = {
+					138
+				}				
+				limit = {
+					is_core_of = ROOT					
+				}				
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = air_base
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				prioritize = {
+					139
+				}				
+				limit = {
+					is_core_of = ROOT					
+				}				
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = air_base
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}				
 	focus = {
 		id = SWE_jumpstart_the_arms_industry
 		icon = GFX_goal_generic_construct_mil_factory
@@ -7021,16 +5923,14 @@ focus_tree = {
 				}
 			}
 		}
-		ai_will_do = {
-			factor = 1
-		}
+		search_filters = { FOCUS_FILTER_HISTORICAL }
 	}
 	focus = {
 		id = SWE_bofors_kanoner
 		icon = GFX_goal_SWE_bofors_kanoner
 		relative_position_id = SWE_begin_initial_rearmament
 		prerequisite = { focus = SWE_begin_initial_rearmament }
-		x = -2
+		x = -3
 		y = 1
 		cost = 10
 
@@ -7056,16 +5956,14 @@ focus_tree = {
 				}				
 			}
 		}
-		ai_will_do = {
-			factor = 1
-		}
+		search_filters = { FOCUS_FILTER_HISTORICAL }
 	}
 	focus = {
 		id = SWE_stockholms_orlogsvarv
 		icon = GFX_goal_SWE_coa_navy
 		relative_position_id = SWE_bofors_kanoner
 		prerequisite = { focus = SWE_bofors_kanoner }
-		x = 0
+		x = -1
 		y = 1
 		cost = 10
 
@@ -7105,16 +6003,13 @@ focus_tree = {
 		completion_reward = {
 			add_ideas = british_convoy_discount
 		}
-		ai_will_do = {
-			factor = 1
-		}
 	}
 	focus = {
 		id = SWE_swedish_hunterkillers
 		icon = GFX_goal_generic_navy_anti_submarine
 		prerequisite = { focus = SWE_bofors_kanoner }
 		relative_position_id = SWE_bofors_kanoner
-		x = -2
+		x = -4
 		y = 1
 		cost = 10
 
@@ -7210,9 +6105,6 @@ focus_tree = {
 				category = bc_tech
 			}
 		}
-		ai_will_do = {
-			factor = 1
-		}
 		search_filters = { FOCUS_FILTER_RESEARCH }
 	}	
 	focus = {
@@ -7244,9 +6136,6 @@ focus_tree = {
                 }
             }
 		}
-		ai_will_do = {
-			factor = 1
-		}
 		search_filters = { FOCUS_FILTER_RESEARCH }
 	}						
 	focus = {
@@ -7272,10 +6161,7 @@ focus_tree = {
 				category = tp_tech
 			}
 		}
-		ai_will_do = {
-			factor = 1
-		}
-			search_filters = { FOCUS_FILTER_RESEARCH }
+		search_filters = { FOCUS_FILTER_RESEARCH }
 	}
 	focus = {
 		id = SWE_submarine_flotilla
@@ -7305,16 +6191,33 @@ focus_tree = {
 				}
 			}
 		}
-		ai_will_do = {
-			factor = 1
-		}
 		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = SWE_swedish_army_staff
+		icon = GFX_goal_SWE_coa_army
+		relative_position_id = SWE_jumpstart_the_arms_industry
+		prerequisite = { focus = SWE_jumpstart_the_arms_industry focus = SWE_bofors_kanoner focus = SWE_expand_airfleet_capabilities }
+		x = 0
+		y = 1
+		cost = 5
+		
+		completion_reward = {
+			army_experience = 25
+			add_doctrine_cost_reduction = {
+				name = land_doc_bonus
+				cost_reduction = 0.5
+				uses = 1
+				category = land_doctrine
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_HISTORICAL }
 	}
 	focus = {
 		id = SWE_conclude_rearmament
 		icon = GFX_goal_swe_rearmament
-		prerequisite = { focus = SWE_bofors_kanoner focus = SWE_expand_airfleet_capabilities focus = SWE_jumpstart_the_arms_industry }
-		relative_position_id = SWE_jumpstart_the_arms_industry
+		prerequisite = { focus = SWE_swedish_army_staff }
+		relative_position_id = SWE_swedish_army_staff
 		x = 0
 		y = 1
 		cost = 10
@@ -7343,11 +6246,11 @@ focus_tree = {
 			}			
 			random_owned_controlled_state = {
 				limit = {
-                    free_building_slots = {
-                        building = industrial_complex
-                        size > 1
-                        include_locked = no
-                    }
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = no
+					}
 					is_core_of = ROOT					
 				}
 				add_extra_state_shared_building_slots = 2
@@ -7358,16 +6261,500 @@ focus_tree = {
 				}
 			}
 		}
+		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_HISTORICAL }
+	}
+	focus = {
+		id = SWE_motorization_initiative
+		icon = GFX_goal_generic_army_motorized
+		prerequisite = { focus = SWE_swedish_army_staff }
+		relative_position_id = SWE_swedish_army_staff
+		x = 2
+		y = 1
+		cost = 10
+
+		available = {
+			arms_factory > 9
+		}
+		
+		completion_reward = {
+			add_ideas = SWE_motorization_idea
+		}
+		search_filters = { FOCUS_FILTER_HISTORICAL  }
+	}
+	focus = {
+		id = SWE_fund_carl_gustafs_gevarsfaktori
+		icon = GFX_goal_generic_small_arms
+		prerequisite = { focus = SWE_swedish_army_staff }
+		relative_position_id = SWE_swedish_army_staff
+		x = -2
+		y = 1
+		cost = 10
+
+		completion_reward = {
+			if = {
+				limit = {
+					controls_state = 141
+				}
+				141 = {
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = arms_factory
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			add_tech_bonus = {
+				name = infantry_weapons_bonus
+				bonus = 1
+				uses = 2
+				category = infantry_weapons
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_HISTORICAL }
+	}
+	focus = {
+		id = SWE_nationalize_landsverk
+		icon = GFX_goal_SWE_nationalize_landsverk
+		prerequisite = { focus = SWE_motorization_initiative }
+		mutually_exclusive = { focus = SWE_respect_landsverk_independence }
+		relative_position_id = SWE_motorization_initiative
+		x = 0
+		y = 1
+		cost = 10
+
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT					
+				}				
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_tech_bonus = {
+				name = SWE_nationalize_landsverk
+				bonus = 0.75
+				uses = 1
+				category = cat_light_armor
+			}
+			add_tech_bonus = {
+				name = SWE_nationalize_landsverk
+				bonus = 0.5
+				uses = 1
+				category = cat_medium_armor
+			}
+			GER = {
+				add_opinion_modifier = {
+					target = SWE
+					modifier = SWE_nationalized_landsverk
+				}
+			}
+		}
 		search_filters = { FOCUS_FILTER_RESEARCH }
 	}
+	focus = {
+		id = SWE_respect_landsverk_independence
+		icon = GFX_focus_SWE_landsverk
+		prerequisite = { focus = SWE_motorization_initiative }
+		mutually_exclusive = { focus = SWE_nationalize_landsverk }
+		relative_position_id = SWE_motorization_initiative
+		x = 2
+		y = 1
+		cost = 10
 
+		completion_reward = {
+			mio:SWE_landsverk_organization = {
+				add_mio_funds = 500
+			}
+			add_offsite_building = {
+				type = arms_factory
+				level = 2
+			}
+			GER = {
+				add_offsite_building = {
+					type = arms_factory
+					level = 1
+				}			
+				add_political_power = 25
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_HISTORICAL }
+	}
+	focus = {
+		id = SWE_fund_tank_research
+		icon = GFX_goal_generic_tank_cogs
+		prerequisite = { focus = SWE_nationalize_landsverk focus = SWE_respect_landsverk_independence }
+		relative_position_id = SWE_nationalize_landsverk
+		x = 1
+		y = 1
+		cost = 10
+		completion_reward = {
+			add_tech_bonus = {
+				name = SWE_fund_tank_research
+				bonus = 0.5
+				uses = 2
+				category = armor_variant_tech
+			}
+			add_tech_bonus = {
+				name = SWE_fund_tank_research
+				bonus = 1
+				uses = 1
+				category = cat_medium_armor
+				category = cat_light_armor
+			}
+		}
+		search_filters = { FOCUS_FILTER_HISTORICAL FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH }
+	}		
+	focus = {
+		id = SWE_winter_equipment
+		icon = GFX_goal_generic_cold_war
+		prerequisite = { focus = SWE_fund_carl_gustafs_gevarsfaktori }
+		relative_position_id = SWE_fund_carl_gustafs_gevarsfaktori
+		x = -1
+		y = 1
+		cost = 10
+
+		completion_reward = {
+			add_ideas = SWE_vintertraning
+            add_tech_bonus = {
+                name = SWE_winter_equipment
+                bonus = 1
+                uses = 2
+                category = winter_clothing_tech
+            }
+			add_tech_bonus = {
+				name = SWE_winter_equipment
+				bonus = 1
+				uses = 1
+				category = support_tech
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = SWE_hire_scania_vabis
+		icon = GFX_goal_generic_modernizing_the_cavalry
+		prerequisite = { focus = SWE_fund_carl_gustafs_gevarsfaktori }
+		prerequisite = { focus = SWE_motorization_initiative }
+		relative_position_id = SWE_fund_carl_gustafs_gevarsfaktori
+		x = 2
+		y = 1
+		cost = 5
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			army_experience = 25
+			add_tech_bonus = {
+				name = SWE_hire_scania_vabis
+				bonus = 0.5
+				uses = 2
+				category = motorized_equipment
+			}
+			if = {
+				limit = {
+					has_dlc = "Arms Against Tyranny"
+				}
+				mio:SWE_scania_vabis_organization = {
+					add_mio_funds = 1000
+				}
+				mio:SWE_volvo_organization = {
+					add_mio_funds = 1000
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_HISTORICAL }
+	}
+	focus = {
+		id = SWE_bicycle_infantry_regiments
+		icon = GFX_focus_SWE_bicycle 
+		x = 0
+		y = 1
+
+		cost = 5
+		prerequisite = { focus = SWE_hire_scania_vabis }
+		relative_position_id = SWE_hire_scania_vabis
+		completion_reward = {
+			set_technology = { bicycle_infantry = 1 popup = no }
+			if = {
+				limit = {
+					has_dlc = "Arms Against Tyranny"
+				}
+				mio:SWE_husqvarna_organization = {
+					add_mio_funds = 750
+				}
+			}
+			custom_effect_tooltip = SWE_bicycle_infantry_tt
+			hidden_effect = {
+				division_template = {
+					name = "Cykelinfanteri"
+					priority = 2
+					division_names_group = SWE_CAV_01
+					regiments = {
+						bicycle_battalion = { x = 0 y = 0 }
+						bicycle_battalion = { x = 0 y = 1 }
+			
+						bicycle_battalion = { x = 1 y = 0 }
+						bicycle_battalion = { x = 1 y = 1 }
+					}
+				}
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					prioritize = { 141 }
+					create_unit = {
+						division = "name = \"Cykelinfanteri\" division_template = \"Cykelinfanteri\" start_experience_factor = 1.0" 
+						owner = SWE
+					}
+				}
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					prioritize = { 124 }
+					create_unit = {
+						division = "name = \"Cykelinfanteri\" division_template = \"Cykelinfanteri\" start_experience_factor = 1.0" 
+						owner = SWE
+					}
+				}
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					prioritize = { 140 }
+					create_unit = {
+						division = "name = \"Cykelinfanteri\" division_template = \"Cykelinfanteri\" start_experience_factor = 1.0" 
+						owner = SWE
+					}
+				}
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					prioritize = { 138 }
+					create_unit = {
+						division = "name = \"Cykelinfanteri\" division_template = \"Cykelinfanteri\" start_experience_factor = 1.0" 
+						owner = SWE
+					}
+				}
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					prioritize = { 1029 }
+					create_unit = {
+						division = "name = \"Cykelinfanteri\" division_template = \"Cykelinfanteri\" start_experience_factor = 1.0" 
+						owner = SWE
+					}
+				}
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					prioritize = { 38 }
+					create_unit = {
+						division = "name = \"Cykelinfanteri\" division_template = \"Cykelinfanteri\" start_experience_factor = 1.0" 
+						owner = SWE
+					}
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_HISTORICAL }
+	}
+    focus = {
+		id = SWE_the_lynx
+		icon = GFX_focus_SWE_lynx_armored_car 
+		prerequisite = { focus = SWE_fund_tank_research focus = SWE_bicycle_infantry_regiments }
+		relative_position_id = SWE_bicycle_infantry_regiments
+		mutually_exclusive = { focus = SWE_mechanized_battalions }
+		x = 0
+		y = 1
+		cost = 10
+
+		available = {
+			arms_factory > 14
+		}
+
+		completion_reward = {
+			if = {
+				limit = {
+					has_dlc = "La Resistance"
+				}
+
+				set_technology = {
+					r56_SWE_lynx_armored_car = 1
+					popup = yes
+				}
+				custom_effect_tooltip = r56_SWE_lynx_armored_car_tt
+				custom_effect_tooltip = r56_SWE_lynx_armored_car_recon_company_tt
+				add_tech_bonus = {
+					name = SWE_the_lynx
+					bonus = 1
+					ahead_reduction = 1
+					uses = 1
+					category = cat_armored_cars 
+				}
+			}
+			else = {
+				add_tech_bonus = {
+					name = SWE_lynx_winter_armored_cars
+					bonus = 0.6
+					uses = 2
+					category = support_tech
+
+				}
+
+				add_doctrine_cost_reduction = {
+					name = SWE_lynx_winter_armored_cars
+					cost_reduction = 0.5
+					uses = 1
+					category = land_doctrine
+				}
+			}
+			if = {
+				limit = {
+					has_dlc = "Arms Against Tyranny"
+				}
+				mio:SWE_scania_vabis_organization = {
+					add_mio_funds = 1000
+				}
+	
+				mio:SWE_volvo_organization= {
+					add_mio_funds = 1000
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_HISTORICAL FOCUS_FILTER_RESEARCH}
+	}
+	focus = {
+		id = SWE_mechanized_battalions
+		icon = GFX_goal_generic_mechanized  
+		prerequisite = { focus = SWE_fund_tank_research focus = SWE_bicycle_infantry_regiments }
+		relative_position_id = SWE_fund_tank_research
+		mutually_exclusive = { focus = SWE_the_lynx }
+		x = 0
+		y = 1
+		cost = 10
+
+		available = {
+			arms_factory > 19
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = SWE_mechanized_battalions
+				bonus = 1
+				uses = 1
+				ahead_reduction = 1
+				category = cat_mechanized_equipment
+			}
+			add_tech_bonus = {
+				name = SWE_mechanized_battalions
+				bonus = 0.5
+				uses = 1
+				technology  = motorized_rocket_unit
+			}
+			swap_ideas = {
+				remove_idea = SWE_motorization_idea
+				add_idea = SWE_mechanized_battalions_idea
+			}			
+		}
+	}		
+	focus = {
+		id = SWE_modern_command_structure
+		icon = GFX_goal_CAN_WCMC
+		prerequisite = { focus = SWE_winter_equipment }
+		relative_position_id = SWE_winter_equipment
+		x = -1
+		y = 1
+		cost = 5
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			army_experience = 10
+			add_doctrine_cost_reduction = {
+				name = SWE_modern_command_structure
+				cost_reduction = 0.5
+				uses = 1
+				category = land_doctrine
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = SWE_royal_military_academy
+		icon = GFX_goal_generic_army_doctrines
+		prerequisite = { focus = SWE_winter_equipment }
+		relative_position_id = SWE_winter_equipment
+		x = 1
+		y = 1
+		cost = 5
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			army_experience = 10
+			every_army_leader = {
+                add_logistics = 1
+            }
+			swap_ideas = {
+				remove_idea = SWE_vintertraning
+				add_idea = SWE_vintertraning2
+			}
+			add_doctrine_cost_reduction = {
+				name = SWE_royal_military_academy
+				cost_reduction = 0.5
+				uses = 1
+				category = land_doctrine
+			}
+
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = SWE_artilleriskjutskolan
+		icon = GFX_goal_generic_army_artillery
+		prerequisite = { focus = SWE_modern_command_structure }
+		prerequisite = { focus = SWE_royal_military_academy }
+		relative_position_id = SWE_modern_command_structure
+		x = 0
+		y = 1
+		cost = 10
+		completion_reward = {
+			add_tech_bonus = {
+				name = infantry_artillery_bonus
+				bonus = 1
+				uses = 2
+				category = artillery
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = SWE_armens_jagarskola
+		icon = GFX_goal_generic_special_forces
+		prerequisite = { focus = SWE_modern_command_structure }
+		prerequisite = { focus = SWE_royal_military_academy }
+		relative_position_id = SWE_royal_military_academy
+		x = 0
+		y = 1
+		cost = 10
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = SWE_armens_jagarskola
+				bonus = 1.5
+				uses = 2
+				category = r56_jaeger_infantry_tech
+			}
+			#add_ideas = SWE_svenska_jagare_idea
+			set_technology = { SWE_svenska_jagare = 1 }
+			custom_effect_tooltip = SWE_armens_jagarskola_tt
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
 
 	focus = {
 		id = SWE_modernizing_the_air_force
 		icon = GFX_goal_SWE_coa_air_force
 		relative_position_id = SWE_expand_airfleet_capabilities
 		prerequisite = { focus = SWE_expand_airfleet_capabilities }
-		x = 1
+		x = 3
 		y = 1
 		cost = 10
 
@@ -7378,6 +6765,7 @@ focus_tree = {
 					has_dlc = "By Blood Alone"
 				}
 				add_tech_bonus = { 
+					name = SWE_modernizing_the_air_force
 					technology = photo_reconnaisance
 					bonus = 0.5
 					uses = 1
@@ -7398,497 +6786,280 @@ focus_tree = {
 				}
 			}
 			add_doctrine_cost_reduction = {
+				name = SWE_modernizing_the_air_force
 				cost_reduction = 0.5
 				uses = 1
 				category = air_doctrine
 			}
 		}
-		search_filters = { FOCUS_FILTER_RESEARCH }
+		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_HISTORICAL }
 	}
-    focus = {
-        id = SWE_strike_craft_designs
-        icon = GFX_goal_generic_air_naval_bomber
+	focus = {
+		id = SWE_found_saab
+		icon = GFX_goal_SWE_saab 
 		prerequisite = { focus = SWE_modernizing_the_air_force }
-        relative_position_id = SWE_modernizing_the_air_force
-        x = 3
-        y = 1
-        cost = 5
-
-        completion_reward = {
-			add_tech_bonus = {
-				bonus = 1
-				uses = 1
-				category = air_equipment
+		relative_position_id = SWE_modernizing_the_air_force
+		x = 0
+		y = 1
+		cost = 10
+		
+		completion_reward = {
+			random_core_state = {
+				prioritize = { 140 }
+				limit = {
+					is_fully_controlled_by = ROOT
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
 			}
-        }
-    }		
-    focus = {
-        id = SWE_contract_cvm
-        icon = GFX_goal_SWE_cvm
-		prerequisite = { focus = SWE_strike_craft_designs }
-        mutually_exclusive = { focus = SWE_hire_junkers }
-        relative_position_id = SWE_strike_craft_designs
-        x = -1
-        y = 1
-        cost = 5
-
-        completion_reward = {
- 			custom_effect_tooltip = available_designer
-			show_ideas_tooltip = SWE_cvm
-        }
-    }
-    focus = {
-        id = SWE_hire_junkers
-        icon = GFX_goal_SWE_junkers
-		prerequisite = { focus = SWE_strike_craft_designs }
-        mutually_exclusive = { focus = SWE_contract_cvm }
-        relative_position_id = SWE_strike_craft_designs
-        x = 1
-        y = 1
-        cost = 5
-
-		available = {
-			NOT = { has_war_with = GER }
-			GER = {
-                has_opinion = {
-                    target = SWE
-                    value > 24
-                }
+			if = {
+				limit = {
+					has_dlc = "Arms Against Tyranny"
+				}
+				mio:SWE_saab_organization = {
+					add_mio_funds = 500
+					unlock_mio_trait_tooltip  = SWE_mio_trait_forefront_of_aeroplane_development
+				}
+			}
+			if = {
+				limit = {
+					has_dlc = "By Blood Alone"
+				}
+				add_tech_bonus = {
+					name = SWE_found_saab
+					bonus = 0.25
+					uses = 2
+					category = light_air
+					category = medium_air
+				}
+			}
+			else = {
+				add_tech_bonus = {
+					name = SWE_found_saab
+					bonus = 0.5
+					uses = 1
+					category = light_fighter
+				}
 			}
 		}
+		search_filters = { FOCUS_FILTER_HISTORICAL }
+	}
+	
+	focus = {
+		id = SWE_domestic_aircraft_designs
+		icon = GFX_goal_generic_air_fighter2 
+		prerequisite = { focus = SWE_found_saab }
+		relative_position_id = SWE_found_saab
+		mutually_exclusive = { focus = SWE_foreign_aircraft_designs }
+		x = -1
+		y = 1
+		cost = 10
+		
+		completion_reward = {
+			air_experience = 100
+			if = {
+				limit = {
+					has_dlc = "By Blood Alone"
+				}
+				add_tech_bonus = {
+					name = SWE_domestic_aircraft_designs
+					bonus = 0.25
+					uses = 2
+					category = light_air
+					category = medium_air
+				}
+			}
+			else = {
+				add_tech_bonus = {
+					name = SWE_domestic_aircraft_designs
+					bonus = 0.75
+					uses = 1
+					category = light_fighter
+				}
+			}
+			if = {
+				limit = {
+					has_dlc = "Arms Against Tyranny"
+				}
+				mio:SWE_saab_organization = {
+					add_mio_funds = 500
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_AIR_XP FOCUS_FILTER_RESEARCH FOCUS_FILTER_HISTORICAL }
+	}
 
-        completion_reward = {
- 			custom_effect_tooltip = available_designer
-			show_ideas_tooltip = SWE_junkers
-        }
-    }
+	focus = {
+		id = SWE_foreign_aircraft_designs
+		icon = GFX_focus_generic_copy_plane_designs
+		relative_position_id = SWE_found_saab
+		mutually_exclusive = { focus = SWE_domestic_aircraft_designs }
+		prerequisite = { focus = SWE_found_saab }
+		x = 1
+		y = 1
+		cost = 10
+
+		available = {
+			any_other_country = {
+				is_major = yes
+				has_government = ROOT
+				NOT = { has_war_with = ROOT }
+			}
+		}
+		
+		completion_reward = {
+			air_experience = 25
+			unlock_decision_category_tooltip = SWE_obtain_plane_schematics_category
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH  }
+	}
+
 	focus = {
 		id = SWE_swedish_nine
-		icon = GFX_goal_zero_blue
-		prerequisite = { focus = SWE_contract_cvm focus = SWE_hire_junkers }
-		mutually_exclusive = {  }
-		relative_position_id = SWE_contract_cvm
-		x = 1
+		icon = GFX_focus_generic_multi_role_aircraft 
+		prerequisite = { focus = SWE_domestic_aircraft_designs focus = SWE_foreign_aircraft_designs}
+		mutually_exclusive = { focus = SWE_low_altitude_bombers }
+		relative_position_id = SWE_domestic_aircraft_designs
+		x = 0
 		y = 1
 		cost = 10
-
-		available = {
-		}
-
 		completion_reward = {
+			air_experience = 25
 			add_ideas = SWE_swedish_nine_tactic
 			add_doctrine_cost_reduction = {
-				name = air_doc_bonus_2
+				name = SWE_swedish_nine
 				cost_reduction = 0.5
 				uses = 1
 				category = air_doctrine
 			}
 		}
-		search_filters = { FOCUS_FILTER_RESEARCH }
-	}
-    focus = {
-        id = SWE_fighter_designs
-        icon = GFX_goal_generic_air_fighter
-		prerequisite = { focus = SWE_modernizing_the_air_force }
-        relative_position_id = SWE_modernizing_the_air_force
-        x = 0
-        y = 1
-        cost = 5
-
-        completion_reward = {
-			add_tech_bonus = {
-				bonus = 1
-				uses = 1
-				category = light_air
-			}
-        }
-    }	
-    focus = {
-        id = SWE_contract_ffvs
-        icon = GFX_goal_SWE_ffvs
-		prerequisite = { focus = SWE_fighter_designs }
-        mutually_exclusive = { focus = SWE_license_republic_aviation }
-        relative_position_id = SWE_fighter_designs
-        x = -1
-        y = 2
-        cost = 5
-
-        completion_reward = {
- 			custom_effect_tooltip = available_designer
-			show_ideas_tooltip = SWE_ffvs
-        }
-    }
-    focus = {
-        id = SWE_license_republic_aviation
-        icon = GFX_goal_SWE_republic_aviation
-		prerequisite = { focus = SWE_fighter_designs }
-        mutually_exclusive = { focus = SWE_contract_ffvs }
-        relative_position_id = SWE_fighter_designs
-        x = 1
-        y = 2
-        cost = 5
-
-		available = {
-			NOT = { has_war_with = USA }
-			USA = {
-                has_opinion = {
-                    target = SWE
-                    value > 24
-                }
-			}
-		}
-
-        completion_reward = {
- 			custom_effect_tooltip = available_designer
-			show_ideas_tooltip = SWE_republic_aviation
-        }
-    }
-	focus = {
-		id = SWE_flygverkstaderna
-		icon = GFX_goal_generic_air_production
-		prerequisite = { focus = SWE_contract_ffvs focus = SWE_license_republic_aviation }
-		relative_position_id = SWE_contract_ffvs
-
-		x = 1
-		y = 1
-		cost = 5
-		completion_reward = {
-			add_tech_bonus = {
-				name = SWE_flygverkstaderna
-				bonus = 0.5
-				uses = 2
-				category = light_air
-			}
-		}
-		search_filters = { FOCUS_FILTER_RESEARCH }
+		search_filters = { FOCUS_FILTER_HISTORICAL }
 	}
 
-
-	### Non WTT Core Unification
 	focus = {
-		id = SWE_unify_scandinavia
-		icon = GFX_goal_NOR_nordic_alliance_crossed_flags
-		relative_position_id = SWE_reclaim_the_imperial_east
-		x = 2
-		y = 1
-		cost = 10
-
-		allow_branch = {
-			NOT = { has_dlc = "Waking the Tiger" }
-		}
-
-		available = {
-			is_subject = no
-			# Norwayz
-			custom_trigger_tooltip = {
-				tooltip = form_country_norway_required_states_tt
-				all_state = {
-					OR = {
-						NOT = { 
-							region = 11
-							region = 191
-						}
-						is_controlled_by = ROOT 
-					}
-				}
-			}
-			# Sweden
-			custom_trigger_tooltip = {
-				tooltip = form_country_sweden_required_states_tt
-				all_state = {
-					OR = {
-						NOT = { 
-							region = 10
-							region = 192
-							AND = {
-								region = 9
-								NOT = {
-									state = 145	#not Aland, don't be that mean
-								}
-							}
-						}
-						is_controlled_by = ROOT 
-					}
-				}
-			}
-			# Denmark / European Mainland
-			custom_trigger_tooltip = {
-				tooltip = form_scandinavia_denmark_required_states_tt
-				all_state = {
-					OR = {
-						NOT = {
-							AND = {
-								region = 6
-								NOT = {
-									state = 56
-									state = 57
-									state = 58
-									state = 998
-									state = 59
-								}
-							}
-						}
-						is_controlled_by = ROOT 
-					}
-				}
-			}			
-		}
-
-		completion_reward = {			
-			set_cosmetic_tag = SCA_UNIFIED
-			# Norway
-			custom_effect_tooltip = form_country_norway_coring_states_tt
-			hidden_effect = {
-				every_state = {
-					limit = {
-						OR = {
-							region = 11
-							region = 191
-						}
-					}
-					add_core_of = ROOT
-				}
-			}
-			# Sweden
-			custom_effect_tooltip = form_country_sweden_coring_states_tt
-			hidden_effect = {
-				every_state = {
-					limit = {
-						OR = {
-							region = 10
-							region = 192
-							AND = {
-								region = 9	#just because there is Gotland and it is a separate state
-								NOT = {
-									state = 145	#not Aland, don't be that mean
-								}
-							}
-						}
-					}
-					add_core_of = ROOT
-				}
-				if = {
-					limit = {
-						controls_state = 145 #aland 
-					}
-					145 = { add_core_of = ROOT }
-				}
-			}
-			# Denmark / European Mainland
-			custom_effect_tooltip = form_scandinavia_denmark_coring_states_tt
-			hidden_effect = {
-				every_state = {
-					limit = {
-						region = 6
-						NOT = {
-							state = 56
-							state = 57
-							state = 58
-							state = 998
-							state = 59
-						}
-					}
-					add_core_of = ROOT
-				}
-			}
-			hidden_effect = {
-				news_event = { id = wtt_news.53 hours = 6 }
-				set_global_flag = form_scandinavia_flag
-			}
-			add_ideas = generic_recent_political_unification
-			add_ideas = generic_recent_army_unification
-			add_ideas = generic_recent_economic_unification	
-		}
-	}
-	focus = {
-		id = SWE_unify_the_nordics
-		icon = GFX_goal_northern_lights
-		relative_position_id = SWE_unify_scandinavia
-		prerequisite = { focus = SWE_unify_scandinavia }
+		id = SWE_low_altitude_bombers
+		icon = GFX_focus_SWE_marauder_bombers 
+		prerequisite = { focus = SWE_domestic_aircraft_designs focus = SWE_foreign_aircraft_designs}
+		relative_position_id = SWE_foreign_aircraft_designs
+		mutually_exclusive = { focus = SWE_swedish_nine }
 		x = 0
 		y = 1
 		cost = 10
 
-		available = {
-			is_subject = no
-			# Norway
-			custom_trigger_tooltip = {
-				tooltip = form_country_norway_required_states_tt
-				all_state = {
-					OR = {
-						NOT = { 
-							region = 11
-							region = 191
-						}
-						is_controlled_by = ROOT 
-					}
-				}
-			}
-			# Sweden
-			custom_trigger_tooltip = {
-				tooltip = form_country_sweden_required_states_tt
-				all_state = {
-					OR = {
-						NOT = { 
-							region = 10
-							region = 192
-							AND = {
-								region = 9
-								NOT = {
-									state = 145	#not Aland, don't be that mean
-								}
-							}
-						}
-						is_controlled_by = ROOT 
-					}
-				}
-			}
-			# Denmark
-			custom_trigger_tooltip = {
-				tooltip = form_country_denmark_required_states_tt
-				all_state = {
-					OR = {
-						NOT = {
-							region = 45	#Faroe Islands
-							region = 161	#Iceland
-							region = 36 #Greenland
-							AND = {
-								region = 6
-								NOT = {
-									state = 56
-									state = 57
-									state = 58
-									state = 998
-									state = 59
-								}
-							}
-						}
-						is_controlled_by = ROOT 
-					}
-				}
-			}
-			# Finland
-			custom_trigger_tooltip = {
-				tooltip = form_country_finland_required_states_tt
-				all_state = {
-					OR = {
-						NOT = { 
-							region = 13	#sorry, but you need Karelia, Petsamo and Salla too!
-							AND = {
-								region = 12
-								NOT = {
-									state = 213	#not Murmansk
-								}
-							}
-							AND = {
-								region = 9
-								NOT = {
-									state = 124	#Aland, not Gotland
-								}
-							}
-						}
-						is_controlled_by = ROOT 
-					}
-				}
-				#controls_state = 111
-				#controls_state = 145
-				#controls_state = 148
-				#controls_state = 149
-				#controls_state = 150
-			}			
-		}
 
+		available_if_capitulated = yes
+		
 		completion_reward = {
-			set_cosmetic_tag = NDC_UNIFIED
-			# Norway
-			custom_effect_tooltip = form_country_norway_coring_states_tt
-			hidden_effect = {
-				hidden_effect = {
-					every_state = {
-						limit = {
-							OR = {
-								region = 11
-								region = 191
-							}
-						}
-						add_core_of = ROOT
-					}
-				}
+			air_experience = 25
+			add_ideas = SWE_low_altitude_bombers_idea
+			add_doctrine_cost_reduction = {
+				name = SWE_low_altitude_bombers
+				cost_reduction = 0.5
+				uses = 1
+				category = air_doctrine
 			}
-			# Sweden
-			custom_effect_tooltip = form_country_sweden_coring_states_tt
-			hidden_effect = {
-				every_state = {
-					limit = {
-						OR = {
-							region = 10
-							region = 192
-							AND = {
-								region = 9	#just because there is Gotland and it is a separate state
-								NOT = {
-									state = 145	#not Aland, not here
-								}
-							}
-						}
-					}
-					add_core_of = ROOT
-				}
-			}
-			# Denmark
-			custom_effect_tooltip = form_country_denmark_coring_states_tt
-			hidden_effect = {
-				every_state = {
-					limit = {
-						OR = {
-							region = 45	#Faroe Islands
-							region = 161	#Iceland
-							region = 36 #Greenland
-							AND = {
-								region = 6
-								NOT = {
-									state = 56
-									state = 57
-									state = 58
-									state = 998
-									state = 59
-								}
-							}
-						}
-					}
-					add_core_of = ROOT
-				}
-			}
-			# Finland
-			custom_effect_tooltip = form_country_finland_coring_states_tt
-			hidden_effect = {
-				every_state = {
-					limit = {
-						OR = {
-							region = 13	#sorry, but you need Karelia, Petsamo and Salla too!
-							AND = {
-								region = 12
-								NOT = {
-									state = 213	#not Murmansk
-								}
-							}
-							AND = {
-								region = 9
-								NOT = {
-									state = 124	#Aland, not Gotland
-								}
-							}
-						}
-					}
-					add_core_of = ROOT
-				}
-			}
-			hidden_effect = {
-				news_event = { id = wtt_news.54 hours = 6 }
-				set_global_flag = form_nordic_league_flag
-			}
-			add_ideas = generic_recent_political_unification
-			add_ideas = generic_recent_army_unification
-			add_ideas = generic_recent_economic_unification				
 		}
+	}
+
+	focus = {
+		id = SWE_the_future_of_aviation
+		icon = GFX_focus_generic_aircraft_production 
+		prerequisite = { focus = SWE_swedish_nine focus = SWE_low_altitude_bombers }
+		relative_position_id = SWE_swedish_nine
+		x = 1
+		y = 1
+		cost = 5
+
+
+		available_if_capitulated = yes
+		
+		completion_reward = {
+			air_experience = 50
+			add_tech_bonus = {
+				name = SWE_the_future_of_aviation
+				bonus = 1
+				uses = 1
+				ahead_reduction = 0.5
+				category = light_air
+				category = medium_air
+			}
+			add_doctrine_cost_reduction = {
+				name = SWE_the_future_of_aviation
+				cost_reduction = 0.5
+				uses = 2
+				category = air_doctrine
+			}
+		}
+		search_filters = { FOCUS_FILTER_AIR_XP FOCUS_FILTER_HISTORICAL }
+	}
+	
+	focus = {
+		id = SWE_the_flying_barrel
+		icon = GFX_goal_SWE_the_flying_barrel 
+		prerequisite = { focus = SWE_the_future_of_aviation }
+		relative_position_id = SWE_the_future_of_aviation
+		mutually_exclusive	= { focus = SWE_rocket_propulsion }
+		x = -1
+		y = 1		
+		cost = 10
+
+
+		available = {
+			num_of_factories > 65
+		}
+		
+		completion_reward = {
+			add_tech_bonus = {
+				name = SWE_the_flying_barrel
+				bonus = 1
+				uses = 1
+				technology  = rocket_engines 
+			}
+			add_tech_bonus = {
+				name = SWE_the_flying_barrel
+				bonus = 1
+				uses = 1
+				ahead_reduction = 1
+				technology  = jet_engines 
+			}
+			SWE_add_saab_tunnan_templates = yes
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_HISTORICAL }
+	}
+
+	focus = {
+		id = SWE_rocket_propulsion
+		icon = GFX_focus_rocketry 
+		prerequisite = { focus = SWE_the_future_of_aviation }
+		relative_position_id = SWE_the_future_of_aviation
+		mutually_exclusive = { focus = SWE_the_flying_barrel }
+		x = 1
+		y = 1
+		cost = 10
+
+
+		available = {
+			num_of_factories > 50
+		}
+		
+		completion_reward = {
+			add_tech_bonus = {
+				name = SWE_rocket_propulsion
+				bonus = 1
+				uses = 1
+				technology  = experimental_rockets
+			}
+			add_tech_bonus = {
+				name = SWE_rocket_propulsion
+				bonus = 1
+				uses = 1
+				technology  = rocket_engines
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
 	}		
 }
