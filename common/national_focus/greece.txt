@@ -60,30 +60,6 @@ focus_tree = {
     			popularity = 0.03
 			}
 			custom_effect_tooltip = GRE_bring_home_the_exiled_republicans_focus_tt
-			ROM = {
-				diplomatic_relation = {
-					country = GRE
-					relation = guarantee
-					active = no
-				}
-			}
-			every_other_country = {
-				limit = {
-					has_opinion_modifier = BFTB_balkan_pact_ally
-				}
-				remove_opinion_modifier = {
-					target = GRE
-					modifier = BFTB_balkan_pact_ally
-				}
-				hidden_effect = {
-					ROOT = {
-						remove_opinion_modifier = {
-							target = PREV
-							modifier = BFTB_balkan_pact_ally
-						}
-					}
-				}
-			}
 			swap_ideas = {
 				remove_idea = GRE_political_instability
 				add_idea = GRE_political_instability_republican
@@ -179,6 +155,13 @@ focus_tree = {
 			hidden_effect = { 
 				country_event = { id = bftb_greece.3 days = 7 }
 				country_event = { id = bftb_greece.90 days = 28 }
+			}
+			if = {
+				limit = {
+					has_idea = r56_YUG_balkan_pact
+				}
+				custom_effect_tooltip = generic_skip_one_line_tt
+				activate_decision = r56_abandon_the_balkan_pact
 			}
 		}
 	}
@@ -1160,6 +1143,12 @@ focus_tree = {
 				set_variable = { var = GRE_communist_loyalty value = 2 }
 				GRE_political_instability_update_effect = yes
 			}
+			if = {
+				limit = {
+					has_idea = r56_YUG_balkan_pact
+				}
+				activate_decision = r56_abandon_the_balkan_pact
+			}
 		}
 	}
 
@@ -1359,9 +1348,9 @@ focus_tree = {
 				TUR = { 
 					country_event = { id = bftb_greece.29 days = 1 }
 				}
-				# SOV = { 	#warns of Greek danger and speaks negatively of communism
-				# 	country_event = { id = bftb_greece.29 days = 7 }
-				# }
+				SOV = {
+					country_event = { id = bftb_greece.30 days = 7 }
+				}
 				add_opinion_modifier = {
 		    		target = TUR
 		    		modifier = GRE_strategic_enemy
@@ -1538,17 +1527,15 @@ focus_tree = {
 
 		search_filters = { FOCUS_FILTER_ANNEXATION FOCUS_FILTER_WAR_SUPPORT }
 		completion_reward = {
-			GRE = {
-				add_state_core = 341
-				add_state_claim = 340
-				add_state_claim = 339
-				add_state_claim = 342
-				add_state_claim = 164
-				create_wargoal = {
-					type = puppet_wargoal_focus
-					target = TUR
-					expire = 0
-				}
+			add_state_core = 341
+			add_state_claim = 340
+			add_state_claim = 339
+			add_state_claim = 342
+			add_state_claim = 164
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = TUR
+				expire = 0
 			}
 			add_war_support = -0.05
 		}
@@ -1800,7 +1787,7 @@ focus_tree = {
 		id = GRE_petition_britain_for_aid
 		icon = GFX_goal_generic_military_deal
 		available = { 
-			GRE = { has_country_flag = GRE_monarchist_civil_war }
+			has_country_flag = GRE_monarchist_civil_war
 		}
 		prerequisite = { focus = GRE_the_right_to_rule }
 		x = 0
@@ -2047,13 +2034,6 @@ focus_tree = {
    	 			popularity = 0.05
 			}
 			custom_effect_tooltip = GRE_fascists_put_in_play_tt
-			ROM = {
-				diplomatic_relation = {
-					country = GRE
-					relation = guarantee
-					active = no
-				}
-			}
 			hidden_effect = { 
 				set_variable = { var = GRE_fascist_loyalty value = 1 }
 				GRE_political_instability_update_effect = yes
@@ -2087,6 +2067,13 @@ focus_tree = {
 				defense_skill = 3
 				planning_skill = 2
 				logistics_skill = 2
+			}
+			if = {
+				limit = {
+					has_idea = r56_YUG_balkan_pact
+				}
+				custom_effect_tooltip = generic_skip_one_line_tt
+				activate_decision = r56_abandon_the_balkan_pact
 			}
 		}
 	}
@@ -2123,10 +2110,7 @@ focus_tree = {
 					}
 				}
 				AUS = { 
-					OR = {
-						has_completed_focus = AUS_the_old_empire
-						has_completed_focus = AUS_issue_emergency_powers
-					}
+					has_completed_focus = AUS_past_glories
 				}
 			}
 		}
@@ -2143,21 +2127,19 @@ focus_tree = {
 		}
 
 		bypass = { 
-			GRE = { 
-				OR = {
-					AND = { 
-						is_in_faction_with = GER
-						GER = { 
-							OR = {
-								has_completed_focus = GER_oppose_hitler
-								has_completed_focus = GER_a_new_reich 
-							}
+			OR = {
+				AND = { 
+					is_in_faction_with = GER
+					GER = { 
+						OR = {
+							has_completed_focus = GER_oppose_hitler
+							has_completed_focus = GER_a_new_reich 
 						}
 					}
-					AND = { 
-						is_in_faction_with = HUN
-						HUN = { has_completed_focus = HUN_invite_the_habsburg_prince }
-					}
+				}
+				AND = { 
+					is_in_faction_with = HUN
+					HUN = { has_completed_focus = HUN_invite_the_habsburg_prince }
 				}
 			}
 		}
@@ -2233,8 +2215,7 @@ focus_tree = {
 				limit = { 
 					AUS = { 
 						OR = {
-							has_completed_focus = AUS_the_old_empire
-							has_completed_focus = AUS_issue_emergency_powers
+							has_completed_focus = AUS_past_glories
 						}
 						is_subject = no
 						is_faction_leader = no
@@ -2277,19 +2258,16 @@ focus_tree = {
 		}
 
 		available = {
+			any_country = {
+				has_government = democratic 
+				is_faction_leader = yes 
+			}
+			is_in_faction = no
 			is_subject = no
 		}
 
 		bypass = {
-			OR = { 
-				GRE = { 
-					is_in_faction_with = ENG
-				}
-				AND = { 
-					ENG = { has_government = communism }
-					ROM = { NOT = { has_completed_focus = ROM_the_cordon_sanitaire } }
-				}
-			}
+			is_in_faction_with = ENG
 		}
 
 		search_filters = { FOCUS_FILTER_ALLIANCE FOCUS_FILTER_POLITICAL }
@@ -2306,7 +2284,7 @@ focus_tree = {
 			else_if = {
 				limit = { 
 					ROM = { 
-						has_completed_focus = ROM_the_cordon_sanitaire
+						has_completed_focus = ROM_strengthen_the_balkan_pact
 						is_faction_leader = yes
 					}
 				}
@@ -2533,7 +2511,7 @@ focus_tree = {
 
 		bypass = {
 			OR = { 
-				GRE = { 
+				AND = { 
 					is_in_faction = yes
 					NOT = {
 						is_in_faction_with = ENG
@@ -2874,6 +2852,22 @@ focus_tree = {
 					}
 				}
 			}
+			
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
 			if = { 
 				limit = { 
 					has_idea = GRE_metaxism_6
@@ -3093,7 +3087,6 @@ focus_tree = {
 		id = GRE_greece_and_turkey_in_the_axis
 		icon = GFX_goal_generic_dangerous_deal
 		prerequisite = { focus = GRE_subjugating_the_bulgarians }
-		available = { has_global_flag = greek_turkish_friendship }
 		mutually_exclusive = { focus = GRE_last_country_standing }
 		x = -1
 		y = 1
@@ -3102,9 +3095,21 @@ focus_tree = {
 		ai_will_do = {
 			base = 1
 		}
-
+		available = {
+			any_country = {
+				OR = {
+					original_tag = GER
+					original_tag = ITA
+				}
+				has_government = fascism 
+				is_faction_leader = yes 
+			}
+			is_in_faction = no
+			is_subject = no
+			has_global_flag = greek_turkish_friendship
+		}
 		bypass = {
-			GRE = { is_in_faction = yes }
+			is_in_faction = yes
 		}
 
 		search_filters = { FOCUS_FILTER_POLITICAL }
@@ -3395,113 +3400,65 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = GRE_open_foreign_subsidized_factories_tt
 			hidden_effect = {
-				if = { 
-					limit = { 
-						country_exists = GER
-						GER = { has_opinion = { target = GRE value > 80 } } 
+				every_other_country = {
+					limit = {
+						OR = {
+							original_tag = GER
+							original_tag = FRA
+							original_tag = ENG
+							original_tag = SOV
+						}
+						exists = yes
+						has_civil_war = no
+						NOT = { has_war_with = ROOT }
+						has_opinion = { target = GRE value > 80 }
 					}
-					random_owned_controlled_state = {
-						limit = {
-							free_building_slots = {
-								building = arms_factory
-								size > 0
-								include_locked = yes
+					ROOT = {
+						random_owned_controlled_state = {
+							limit = {
+								free_building_slots = {
+									building = arms_factory
+									size > 0
+									include_locked = yes
+								}
+							}
+							add_extra_state_shared_building_slots = 1
+							add_building_construction = {
+								type = arms_factory
+								level = 1
+								instant_build = yes
 							}
 						}
-						add_extra_state_shared_building_slots = 1
-						add_building_construction = {
-							type = arms_factory
-							level = 1
-							instant_build = yes
-						}
-					}
-					random_owned_controlled_state = {
-						limit = {
-							free_building_slots = {
-								building = industrial_complex
-								size > 0
-								include_locked = yes
+						random_owned_controlled_state = {
+							limit = {
+								free_building_slots = {
+									building = industrial_complex
+									size > 0
+									include_locked = yes
+								}
 							}
-						}
-						add_extra_state_shared_building_slots = 1
-						add_building_construction = {
-							type = industrial_complex
-							level = 1
-							instant_build = yes
+							add_extra_state_shared_building_slots = 1
+							add_building_construction = {
+								type = industrial_complex
+								level = 1
+								instant_build = yes
+							}
 						}
 					}
 				}
-				if = { 
-					limit = { 
-						country_exists = FRA
-						FRA = { has_opinion = { target = GRE value > 80 } } 
+			}
+			every_other_country = {
+				limit = {
+					OR = {
+						original_tag = GER
+						original_tag = FRA
+						original_tag = ENG
+						original_tag = SOV
 					}
-					random_owned_controlled_state = {
-						limit = {
-							free_building_slots = {
-								building = arms_factory
-								size > 0
-								include_locked = yes
-							}
-						}
-						add_extra_state_shared_building_slots = 1
-						add_building_construction = {
-							type = arms_factory
-							level = 1
-							instant_build = yes
-						}
-					}
-					random_owned_controlled_state = {
-						limit = {
-							free_building_slots = {
-								building = industrial_complex
-								size > 0
-								include_locked = yes
-							}
-						}
-						add_extra_state_shared_building_slots = 1
-						add_building_construction = {
-							type = industrial_complex
-							level = 1
-							instant_build = yes
-						}
-					}
-				}
-				if = { 
-					limit = { 
-						country_exists = ENG
-						ENG = { has_opinion = { target = GRE value > 80 } } 
-					}
-					random_owned_controlled_state = {
-						limit = {
-							free_building_slots = {
-								building = arms_factory
-								size > 0
-								include_locked = yes
-							}
-						}
-						add_extra_state_shared_building_slots = 1
-						add_building_construction = {
-							type = arms_factory
-							level = 1
-							instant_build = yes
-						}
-					}
-					random_owned_controlled_state = {
-						limit = {
-							free_building_slots = {
-								building = industrial_complex
-								size > 0
-								include_locked = yes
-							}
-						}
-						add_extra_state_shared_building_slots = 1
-						add_building_construction = {
-							type = industrial_complex
-							level = 1
-							instant_build = yes
-						}
-					}
+					exists = yes
+					has_civil_war = no
+					NOT = { has_war_with = ROOT }
+					has_opinion = { target = GRE value > -80 }
 				}
 			}
 		}
@@ -3568,21 +3525,18 @@ focus_tree = {
 					free_building_slots = {
 						building = infrastructure
 						size < 3
-						include_locked = yes
 					}
 				}
 				186 = { 
 					free_building_slots = {
 						building = infrastructure
 						size < 2
-						include_locked = yes
 					}
 				}
 				185 = { 
 					free_building_slots = {
 						building = infrastructure
 						size < 2
-						include_locked = yes
 					}
 				}
 			}	
@@ -3598,7 +3552,6 @@ focus_tree = {
 						free_building_slots = {
 							building = infrastructure
 							size > 3
-							include_locked = yes
 						}
 					}
 					add_building_construction = {
@@ -3615,7 +3568,6 @@ focus_tree = {
 						free_building_slots = {
 							building = infrastructure
 							size > 2
-							include_locked = yes
 						}
 					}
 					add_building_construction = {
@@ -3632,7 +3584,6 @@ focus_tree = {
 						free_building_slots = {
 							building = infrastructure
 							size > 2
-							include_locked = yes
 						}
 					}
 					add_building_construction = {
@@ -3681,9 +3632,31 @@ focus_tree = {
 			if = {
 				limit = {
 					NOT = { has_government = communism }
+					amount_taken_ideas = {
+					    amount < 3
+					    slots = {
+					        political_advisor
+					    }
+					}
 				}
 				add_political_power = 120
 				effect_tooltip = { add_ideas = GRE_emmanouil_tsouderos }
+				hidden_effect = {
+					add_ideas = GRE_emmanouil_tsouderos
+				}
+			}
+			else_if = {
+				limit = {
+					NOT = { has_government = communism }
+					amount_taken_ideas = {
+					    amount > 2
+					    slots = {
+					        political_advisor
+					    }
+					}
+				}
+				custom_effect_tooltip = available_political_advisor
+				show_ideas_tooltip = GRE_emmanouil_tsouderos
 			}
 			else = {
 				add_political_power = 250
@@ -3727,61 +3700,26 @@ focus_tree = {
 			add_political_power = 200
 			custom_effect_tooltip = GRE_bedrock_of_balkan_financial_stability_tt
 			hidden_effect = {
-				if = { 
-					limit = { 
-						country_exists = ALB
-						ALB = { has_opinion = { target = GRE value > 50 } } 
+				every_other_country = {		# Illya: lowered the requirements to 50 opinion and removed +2 factories from ROM, CZE, TUR
+					limit = {
+						OR = {
+							original_tag = ALB
+							original_tag = BUL
+							original_tag = HUN
+							original_tag = YUG
+							original_tag = AUS
+							original_tag = ROM
+							original_tag = TUR
+							original_tag = CZE
+						}
+						exists = yes
+						has_civil_war = no
+						NOT = { has_war_with = ROOT }
+						has_opinion = { target = ROOT value > 50 }
 					}
-					add_offsite_building = { type = industrial_complex level = 1 }
-				}	
-				if = { 	
-					limit = { 
-						country_exists = BUL
-						BUL = { has_opinion = { target = GRE value > 50 } } 
+					ROOT = {
+						add_offsite_building = { type = industrial_complex level = 1 }
 					}
-					add_offsite_building = { type = industrial_complex level = 1 }
-				}	
-				if = { 	
-					limit = { 
-						country_exists = HUN
-						HUN = { has_opinion = { target = GRE value > 50 } } 
-					}
-					add_offsite_building = { type = industrial_complex level = 1 }
-				}	
-				if = { 
-					limit = { 
-						country_exists = YUG
-						YUG = { has_opinion = { target = GRE value > 50 } } 
-					}
-					add_offsite_building = { type = industrial_complex level = 1 }
-				}
-				if = { 	
-					limit = { 
-						country_exists = AUS
-						AUS = { has_opinion = { target = GRE value > 75 } } 
-					}
-					add_offsite_building = { type = industrial_complex level = 2 }
-				}
-				if = { 	
-					limit = { 
-						country_exists = ROM
-						ROM = { has_opinion = { target = GRE value > 75 } } 
-					}
-					add_offsite_building = { type = industrial_complex level = 2 }
-				}
-				if = { 
-					limit = { 
-						country_exists = TUR
-						TUR = { has_opinion = { target = GRE value > 75 } } 
-					}
-					add_offsite_building = { type = industrial_complex level = 2 }
-				}
-				if = { 	
-					limit = { 
-						country_exists = CZE
-						CZE = { has_opinion = { target = GRE value > 85 } } 
-					}
-					add_offsite_building = { type = industrial_complex level = 3 }
 				}
 			}
 		}

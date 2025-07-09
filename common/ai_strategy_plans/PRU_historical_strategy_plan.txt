@@ -4,8 +4,11 @@ PRU_historical_plan = {
 	name = "PRU: Peru Historical AI Plan"
 	desc = "Historical behavior for Peru."
 
-	enable = {
+	allowed = {
 		original_tag = PRU
+	}
+
+	enable = {
 		is_historical_focus_on = yes
 	}
 
@@ -52,7 +55,7 @@ PRU_historical_plan = {
 		#1940
 		PRU_modernize_the_infantry_kit			#70
 		PRU_create_the_infantry_and_cavalry_schools	#70
-		PRU_Marina_de_Guerra						#70
+		PRU_a_reborn_navy						#70
 		PRU_expand_the_naval_factory_of_bellavista	#70
 		PRU_National_Admiralty_Corps			#70
 		PRU_naval_industry						#70
@@ -64,6 +67,10 @@ PRU_historical_plan = {
 		PRU_gold_and_silver_mining				#70
 
 		#after that, somebody else can pick it up...
+	}
+
+	focus_factors = {
+		PRU_hit_bolivia = 0
 	}
 
 	traits = {

@@ -42,6 +42,20 @@ focus = {
 
 	cost = 7.2	#50 days, not 42
 
+	allow_branch = {
+		if = {
+			limit = {
+				has_game_rule = {
+					rule = obsolete_focus_branches_visibility
+					option = HIDE
+				}
+			}
+			NOT = {
+				has_completed_focus = PRU_look_to_the_past
+			}
+		}
+	}
+
 	ai_will_do = {
 		factor = 10
 	}
@@ -51,7 +65,7 @@ focus = {
 		add_stability = 0.05
 		country_event = { hours = 4 id = peru.1 }
         hidden_effect = {
-		 PRU = { country_event = { days = 35 id = peru.56 } }	
+			PRU = { country_event = { days = 35 id = peru.56 } }	
 		}
 	}
 	search_filters = { FOCUS_FILTER_POLITICAL }
@@ -64,20 +78,31 @@ focus = {
 	x = 57
 	y = 0
 
+	offset = {
+		trigger = {
+			has_game_rule = {
+				rule = obsolete_focus_branches_visibility
+				option = HIDE
+			}
+			has_completed_focus = PRU_look_to_the_past
+		}
+		x = -33
+	}
+
 	cost = 5
 
 	ai_will_do = {
 		factor = 10
 	}
 
-	completion_reward = { 
-        
+	completion_reward = {
 		add_popularity = { ideology = neutrality popularity = 0.06 }
 		add_ideas = HON_monarch_influence
 		set_party_name = { ideology = neutrality long_name = "Gobierno Provicional" name = "Gobierno Provicional" }
 		retire_character = PRU_oscar_benavides
 		promote_character = PRU_gobierno_provicional
-	
+		
+		mark_focus_tree_layout_dirty = yes
 	}
 	search_filters = { FOCUS_FILTER_POLITICAL }
 }
@@ -120,12 +145,34 @@ focus = {
 		factor = 10
 	}
 
+	available = {
+		NOT = { # check if he is active in another country
+			any_other_country = {
+				has_country_leader = {
+					character = SPA_karl_pius_von_habsburg
+					ruling_only = no
+				}
+			}
+		}
+	}
+
 	completion_reward = {
 
 		hidden_effect = {
 			set_politics = { ruling_party = neutrality elections_allowed = no }
-            set_country_flag = PRU_no_peru_bolivia
+			set_country_flag = PRU_no_peru_bolivia
         
+		}
+		every_possible_country = {
+			limit = { has_character = SPA_karl_pius_von_habsburg }
+			random_character = {
+				limit = { is_character = SPA_karl_pius_von_habsburg }
+				set_nationality = ROOT
+			}
+		}
+		set_character_name = {
+			character = SPA_karl_pius_von_habsburg
+			name = "Carlos Pío de Habsburgo-Borbón" #I hesitate with keeping Carlos I used previously by Peru (but it doesn't work in Spain) In Spain he would be "Carlos VIII", the regnal name he claimed when he became a Carlist claimant.
 		}
 		remove_ideas = PRU_apra_revolution
 	}
@@ -288,14 +335,14 @@ focus = {
 			add_popularity = { ideology = neutrality popularity = 0.1 }
 			set_party_name = { ideology = neutrality long_name = "House of Bourbon" name = "House of Bourbon" }
 			add_country_leader_role = {
-				character = PRU_Carlos_I_of_habsburg
+				character = SPA_karl_pius_von_habsburg
 				promote_leader = yes
 				country_leader = {
 					ideology = absolute_monarchism
 					expire = "1965.1.1.1"
 					traits = {
+						carlist_habsburg_pretender
 						r56_trait_opposed_to_communism
-						lifelong_carlist
 					}
 				}
 			}
@@ -307,7 +354,7 @@ focus = {
 		}
 		if = {
 			limit = {
-				has_completed_focus = PRU_Appoint_a_Peruvian_monarch
+				has_completed_focus = PRU_appoint_a_peruvian_monarch
 			}
 			set_cosmetic_tag = PRU_EMP
 			add_ideas = PRU_imperial_army
@@ -320,8 +367,8 @@ focus = {
 					ideology = absolute_monarchism
 					expire = "1965.1.1.1"
 					traits = {
-						r56_trait_opposed_to_communism
 						nationalist_symbol
+						r56_trait_opposed_to_communism
 					}
 				}
 			}
@@ -360,7 +407,7 @@ focus = {
 
 			if = {
 			limit = {
-				has_completed_focus = PRU_Appoint_a_Peruvian_monarch
+				has_completed_focus = PRU_appoint_a_peruvian_monarch
 			}
 			swap_ideas = {
 			  remove_idea = PRU_imperial_army
@@ -397,7 +444,7 @@ focus = {
 
 		if = {
 			limit = {
-				has_completed_focus = PRU_Appoint_a_Peruvian_monarch
+				has_completed_focus = PRU_appoint_a_peruvian_monarch
 			}
           	hidden_effect = {
               	set_country_flag = PRU_miro_general
@@ -420,6 +467,7 @@ focus = {
         }
         completion_reward = {
 			add_tech_bonus = {
+				name = PRU_Royal_Construction_Program
 			       bonus = 1.0
 			        uses = 2
 			        category = industry
@@ -462,7 +510,7 @@ focus = {
 
 			if = {
 			limit = {
-				has_completed_focus = PRU_Appoint_a_Peruvian_monarch
+				has_completed_focus = PRU_appoint_a_peruvian_monarch
 			}
 			swap_ideas = {
 			  remove_idea = PRU_imperial_army_1
@@ -534,7 +582,7 @@ focus = {
 
 			if = {
 			limit = {
-				has_completed_focus = PRU_Appoint_a_Peruvian_monarch
+				has_completed_focus = PRU_appoint_a_peruvian_monarch
 			}
 			swap_ideas = {
 			  remove_idea = PRU_imperial_army_2
@@ -554,31 +602,31 @@ focus = {
 	y = 9
 	relative_position_id = PRU_look_to_the_past
 	cost = 3
-	 search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY}
-        ai_will_do = {
-            factor = 10
-        }
-        completion_reward = {
-			if = {
+	search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY}
+	ai_will_do = {
+		factor = 10
+	}
+	completion_reward = {
+		if = {
 			limit = {
 				has_completed_focus = PRU_invite_carlos
 			}
 			swap_ideas = {
-			  remove_idea = PRU_royal_army_2
-		      add_idea = PRU_royal_army_3
+			remove_idea = PRU_royal_army_2
+			add_idea = PRU_royal_army_3
 			}
-			}
+		}
 
-			if = {
+		if = {
 			limit = {
-				has_completed_focus = PRU_Appoint_a_Peruvian_monarch
+				has_completed_focus = PRU_appoint_a_peruvian_monarch
 			}
 			swap_ideas = {
-			  remove_idea = PRU_imperial_army_2
-		      add_idea = PRU_imperial_army_3
+			remove_idea = PRU_imperial_army_2
+			add_idea = PRU_imperial_army_3
 			}
-			}
-        }
+		}
+	}
 }
 
 focus = {
@@ -599,7 +647,7 @@ focus = {
 		if = {
 			limit = {
 				has_completed_focus = PRU_invite_carlos
-				has_completed_focus = PRU_Sons_of_the_Conquistador
+				has_completed_focus = PRU_sons_of_the_conquistador
 			}
 			swap_ideas = {
 			  remove_idea = PRU_royal_army_3
@@ -609,7 +657,7 @@ focus = {
 		 if = {
 			limit = {
 				has_completed_focus = PRU_invite_carlos
-				has_completed_focus = PRU_Defend_our_empire
+				has_completed_focus = PRU_defend_our_empire
 			}
 			swap_ideas = {
 			  remove_idea = PRU_royal_army_3_d
@@ -619,8 +667,8 @@ focus = {
 
 			if = {
 			limit = {
-				has_completed_focus = PRU_Appoint_a_Peruvian_monarch
-				has_completed_focus = PRU_Sons_of_the_Conquistador
+				has_completed_focus = PRU_appoint_a_peruvian_monarch
+				has_completed_focus = PRU_sons_of_the_conquistador
 			}
 			swap_ideas = {
 			  remove_idea = PRU_imperial_army_3
@@ -630,8 +678,8 @@ focus = {
 
 			if = {
 			limit = {
-				has_completed_focus = PRU_Appoint_a_Peruvian_monarch
-				has_completed_focus = PRU_Defend_our_empire
+				has_completed_focus = PRU_appoint_a_peruvian_monarch
+				has_completed_focus = PRU_defend_our_empire
 			}
 			swap_ideas = {
 			  remove_idea = PRU_imperial_army_3_d
@@ -662,7 +710,7 @@ focus = {
 		if = {
 			limit = {
 				has_completed_focus = PRU_invite_carlos
-				has_completed_focus = PRU_Sons_of_the_Conquistador
+				has_completed_focus = PRU_sons_of_the_conquistador
 			}
 			swap_ideas = {
 			  remove_idea = PRU_royal_army_4
@@ -672,7 +720,7 @@ focus = {
 		 if = {
 			limit = {
 				has_completed_focus = PRU_invite_carlos
-				has_completed_focus = PRU_Defend_our_empire
+				has_completed_focus = PRU_defend_our_empire
 			}
 			swap_ideas = {
 			  remove_idea = PRU_royal_army_4_d
@@ -682,8 +730,8 @@ focus = {
 
 			if = {
 			limit = {
-				has_completed_focus = PRU_Appoint_a_Peruvian_monarch
-				has_completed_focus = PRU_Sons_of_the_Conquistador
+				has_completed_focus = PRU_appoint_a_peruvian_monarch
+				has_completed_focus = PRU_sons_of_the_conquistador
 			}
 			swap_ideas = {
 			  remove_idea = PRU_imperial_army_4
@@ -693,8 +741,8 @@ focus = {
 
 			if = {
 			limit = {
-				has_completed_focus = PRU_Appoint_a_Peruvian_monarch
-				has_completed_focus = PRU_Defend_our_empire
+				has_completed_focus = PRU_appoint_a_peruvian_monarch
+				has_completed_focus = PRU_defend_our_empire
 			}
 			swap_ideas = {
 			  remove_idea = PRU_imperial_army_4_d
@@ -1677,7 +1725,6 @@ focus = {
 					picture = "gfx/leaders/PRU/r56_portrait_PRU_Peruvian_Military_Junta_colombia.dds"
 					expire = "1965.1.1"
 					ideology = absolute_monarchism
-					traits = { }
 				}
 				
 				set_politics = { ruling_party = neutrality elections_allowed = no }
@@ -1999,7 +2046,6 @@ focus = {
 					picture = "gfx/leaders/PRU/r56_portrait_PRU_Peruvian_Military_Junta_argentina.dds"
 					expire = "1965.1.1"
 					ideology = absolute_monarchism
-					traits = { }
 				}
 				
 				set_politics = { ruling_party = neutrality elections_allowed = no }
@@ -2142,193 +2188,194 @@ focus = {
 	cost = 10
     available = {
 		OR = {
-				AND = {
-					SPR = {
-						exists = yes
-						is_subject_of = ROOT
-					}
-				}
-				AND = {
-					custom_trigger_tooltip = {
-						OR = {
-                          controls_state = 166
-                             any_country = {
-                                is_subject_of = ROOT
-                                controls_state = 166
-                            }
-                        }
-                        
-                        OR = {
-                            controls_state = 791
-                            any_country = {
-                                is_subject_of = ROOT
-                                controls_state = 791
-                            }
-                        }
-                        
-                        OR = {
-                            controls_state = 167
-                            any_country = {
-                                is_subject_of = ROOT
-                                controls_state = 167
-                            }
-                        }
-                        
-                        OR = {
-                            controls_state = 169
-                            any_country = {
-                                is_subject_of = ROOT
-                                controls_state = 169
-                            }
-                        }
-                        
-                        OR = {
-                            controls_state = 788
-                            any_country = {
-                                is_subject_of = ROOT
-                                controls_state = 788
-                            }
-                        }
-                        
-                        OR = {
-                            controls_state = 792
-                            any_country = {
-                                is_subject_of = ROOT
-                                controls_state = 792
-                            }
-                        }
-                        
-                        OR = {
-                            controls_state = 172
-                            any_country = {
-                                is_subject_of = ROOT
-                                controls_state = 172
-                            }
-                        }
-                        
-                        OR = {
-                            controls_state = 168
-                            any_country = {
-                                is_subject_of = ROOT
-                                controls_state = 168
-                            }
-                        }
-                        
-                        OR = {
-                            controls_state = 41
-                            any_country = {
-                                is_subject_of = ROOT
-                                controls_state = 41
-                            }
-                        }
-                        
-                        OR = {
-                            controls_state = 174
-                            any_country = {
-                                is_subject_of = ROOT
-                                controls_state = 174
-                            }
-                        }
-                        
-                        OR = {
-                            controls_state = 178
-                            any_country = {
-                                is_subject_of = ROOT
-                                controls_state = 178
-                            }
-                        }
-                        
-                        OR = {
-                            controls_state = 177
-                            any_country = {
-                                is_subject_of = ROOT
-                                controls_state = 177
-                            }
-                        }
-                        
-                        OR = {
-                            controls_state = 793
-                            any_country = {
-                                is_subject_of = ROOT
-                                controls_state = 793
-                            }
-                        }
-                        
-                        OR = {
-                            controls_state = 173
-                            any_country = {
-                                is_subject_of = ROOT
-                                controls_state = 173
-                            }
-                        }
-                        
-                        OR = {
-                            controls_state = 171
-                            any_country = {
-                                is_subject_of = ROOT
-                                controls_state = 171
-                            }
-                        }
-                        
-                        OR = {
-                            controls_state = 170
-                            any_country = {
-                                is_subject_of = ROOT
-                                controls_state = 170
-                            }
-                        }
-                        
-                        OR = {
-                            controls_state = 794
-                            any_country = {
-                                is_subject_of = ROOT
-                                controls_state = 794
-                            }
-                        }
-                        
-                        OR = {
-                            controls_state = 789
-                            any_country = {
-                                is_subject_of = ROOT
-                                controls_state = 789
-                            }
-                        }
-                        
-                        OR = {
-                            controls_state = 175
-                            any_country = {
-                                is_subject_of = ROOT
-                                controls_state = 175
-                            }
-                        }
-                        
-                        OR = {
-                            controls_state = 165
-                            any_country = {
-                                is_subject_of = ROOT
-                                controls_state = 165
-                            }
-                        }
-                        
-                        OR = {
-                            controls_state = 176
-                            any_country = {
-                                is_subject_of = ROOT
-                                controls_state = 176
-                            }
-                        }
-                        
-                        OR = {
-                            controls_state = 790
-                            any_country = {
-                                is_subject_of = ROOT
-                                controls_state = 790
-                            }
-                        }
-						
-					}
+			AND = {
+				SPR = {
+					exists = yes
+					is_subject_of = ROOT
 				}
 			}
+			AND = {
+				custom_trigger_tooltip = {
+					tooltip = PRU_all_spanish_cores_controlled_by_self_or_puppet_tt
+					OR = {
+						controls_state = 166
+						any_country = {
+							is_subject_of = ROOT
+							controls_state = 166
+						}
+					}
+					
+					OR = {
+						controls_state = 791
+						any_country = {
+							is_subject_of = ROOT
+							controls_state = 791
+						}
+					}
+					
+					OR = {
+						controls_state = 167
+						any_country = {
+							is_subject_of = ROOT
+							controls_state = 167
+						}
+					}
+					
+					OR = {
+						controls_state = 169
+						any_country = {
+							is_subject_of = ROOT
+							controls_state = 169
+						}
+					}
+					
+					OR = {
+						controls_state = 788
+						any_country = {
+							is_subject_of = ROOT
+							controls_state = 788
+						}
+					}
+					
+					OR = {
+						controls_state = 792
+						any_country = {
+							is_subject_of = ROOT
+							controls_state = 792
+						}
+					}
+					
+					OR = {
+						controls_state = 172
+						any_country = {
+							is_subject_of = ROOT
+							controls_state = 172
+						}
+					}
+					
+					OR = {
+						controls_state = 168
+						any_country = {
+							is_subject_of = ROOT
+							controls_state = 168
+						}
+					}
+					
+					OR = {
+						controls_state = 41
+						any_country = {
+							is_subject_of = ROOT
+							controls_state = 41
+						}
+					}
+					
+					OR = {
+						controls_state = 174
+						any_country = {
+							is_subject_of = ROOT
+							controls_state = 174
+						}
+					}
+					
+					OR = {
+						controls_state = 178
+						any_country = {
+							is_subject_of = ROOT
+							controls_state = 178
+						}
+					}
+					
+					OR = {
+						controls_state = 177
+						any_country = {
+							is_subject_of = ROOT
+							controls_state = 177
+						}
+					}
+					
+					OR = {
+						controls_state = 793
+						any_country = {
+							is_subject_of = ROOT
+							controls_state = 793
+						}
+					}
+					
+					OR = {
+						controls_state = 173
+						any_country = {
+							is_subject_of = ROOT
+							controls_state = 173
+						}
+					}
+					
+					OR = {
+						controls_state = 171
+						any_country = {
+							is_subject_of = ROOT
+							controls_state = 171
+						}
+					}
+					
+					OR = {
+						controls_state = 170
+						any_country = {
+							is_subject_of = ROOT
+							controls_state = 170
+						}
+					}
+					
+					OR = {
+						controls_state = 794
+						any_country = {
+							is_subject_of = ROOT
+							controls_state = 794
+						}
+					}
+					
+					OR = {
+						controls_state = 789
+						any_country = {
+							is_subject_of = ROOT
+							controls_state = 789
+						}
+					}
+					
+					OR = {
+						controls_state = 175
+						any_country = {
+							is_subject_of = ROOT
+							controls_state = 175
+						}
+					}
+					
+					OR = {
+						controls_state = 165
+						any_country = {
+							is_subject_of = ROOT
+							controls_state = 165
+						}
+					}
+					
+					OR = {
+						controls_state = 176
+						any_country = {
+							is_subject_of = ROOT
+							controls_state = 176
+						}
+					}
+					
+					OR = {
+						controls_state = 790
+						any_country = {
+							is_subject_of = ROOT
+							controls_state = 790
+						}
+					}
+					
+				}
+			}
+		}
 	}
 	ai_will_do = {
 		factor = 10
@@ -2338,19 +2385,16 @@ focus = {
 		unlock_decision_category_tooltip = PRU_core_claim_territories_decision 
 		set_cosmetic_tag = UKSP
 		set_capital = { state = 41}
-	    add_country_leader_role = {
-			character = PRU_Carlos_I_of_habsburg_king
-			promote_leader = yes
-			country_leader = {
-				ideology = absolute_monarchism
-				expire = "1965.1.1.1"
-				traits = {
-					PRU_rey_de_las_espanas 
-					lifelong_carlist
-					the_soldier_king
-				}
-			}
+		set_portraits = {
+		    character = SPA_karl_pius_von_habsburg
+		    army = { small = "gfx/leaders/PRU/r56_portrait_PRU_karl_pius_habsburg_king.dds" }
 		}
+		add_trait = {
+		     character = SPA_karl_pius_von_habsburg
+		     ideology = absolute_monarchism
+		     trait = PRU_rey_de_las_espanas
+		}
+		# could change the name to Carlos V of Spain but it could cause a confusion with Charles V of the HRE aka Carlos I of Spain, or it could be a way to continue towards a total Habsburg reunification...
 			
                 every_state = {	#transfer states from subject
 				limit = {
@@ -2419,7 +2463,7 @@ focus = {
 focus = {
 	id = PRU_claim_the_portuguese_empire
 	prerequisite = { focus = PRU_create_the_united_kingdom_of_spain}
-	mutually_exclusive = { focus = PRU_claim_the_Habsburg_territories}
+	mutually_exclusive = { focus = PRU_claim_the_habsburg_territories}
 	icon = GFX_mocidade
 	x = 1
 	y = 1
@@ -2681,7 +2725,7 @@ focus = {
 
 
 focus = {
-	id = PRU_the_superiority_of_the_copper_race
+	id = PRU_superiority_of_the_copper_race
 	prerequisite = { focus = PRU_the_inca_congress }
 	mutually_exclusive = { focus = PRU_red_pachamama}
 	mutually_exclusive = { focus = PRU_crown_an_inca }
@@ -2760,8 +2804,8 @@ focus = {
 }
 
 focus = {
-	id = PRU_eliminate_the_descendants_of_europeans
-	prerequisite = { focus = PRU_the_superiority_of_the_copper_race}
+	id = PRU_secure_the_future_of_the_nation
+	prerequisite = { focus = PRU_superiority_of_the_copper_race}
 	icon = GFX_goal_generic_crisis
 	x = 1
 	y = 7
@@ -2777,7 +2821,6 @@ focus = {
 			set_variable = { PRU_oli_loyalty = -2 }
 		PRU_partidos_update_update_effect = yes
 		custom_effect_tooltip = PRU_oli_loyalty_hostile_status_text
-			add_manpower = -5000
 		add_popularity = { ideology = communism popularity = -0.1 }
 		add_popularity = { ideology = democratic popularity = -0.1 }
         }
@@ -2785,7 +2828,7 @@ focus = {
 
 focus = {
 	id = PRU_the_true_owners_of_america
-	prerequisite = { focus = PRU_eliminate_the_descendants_of_europeans}
+	prerequisite = { focus = PRU_secure_the_future_of_the_nation}
 	prerequisite = { focus = PRU_illapa_the_thunder_of_the_andes}
 	icon = GFX_goal_italy_besagliari
 	x = 2
@@ -2815,7 +2858,7 @@ focus = {
 }
 
 focus = {
-	id = PRU_Liberate_the_indigenous_people_of_America
+	id = PRU_liberate_the_indigenous_people_of_america
 	prerequisite = { focus = PRU_organize_protests_in_the_south focus = PRU_the_true_owners_of_america focus= PRU_revolutionary_andes}
 
 	icon =  GFX_goal_tfv_saf_anti_colonialist_crusade
@@ -2854,11 +2897,9 @@ focus = {
 					}
 				}
 				NOT = {
-					OR = {
-						tag = ROOT
-						is_subject_of = ROOT
-						is_in_faction_with = ROOT
-					}
+					tag = ROOT
+					is_subject_of = ROOT
+					is_in_faction_with = ROOT
 				}
 			}
 			add_opinion_modifier = {
@@ -2876,7 +2917,7 @@ focus = {
 
 		if = {
 			limit = {
-				has_completed_focus = PRU_the_superiority_of_the_copper_race
+				has_completed_focus = PRU_superiority_of_the_copper_race
 			}
 			create_faction = "Native Axis"
 		}
@@ -2894,7 +2935,7 @@ focus = {
 focus = {
 	id = PRU_red_pachamama
 	prerequisite = { focus = PRU_the_inca_congress }
-	mutually_exclusive = { focus = PRU_the_superiority_of_the_copper_race }
+	mutually_exclusive = { focus = PRU_superiority_of_the_copper_race }
 	mutually_exclusive = { focus = PRU_crown_an_inca }
 	icon = GFX_goal_PRU_tupac_amaru
 	x = 4
@@ -2971,7 +3012,7 @@ focus = {
 
 focus = {
 	id = PRU_illapa_the_thunder_of_the_andes
-	prerequisite = { focus = PRU_red_pachamama focus = PRU_the_superiority_of_the_copper_race }
+	prerequisite = { focus = PRU_red_pachamama focus = PRU_superiority_of_the_copper_race }
 	icon = GFX_goal_generic_army
 	x = 3
 	y = 7
@@ -2994,7 +3035,7 @@ focus = {
 
 			if = {
 			limit = {
-				has_completed_focus = PRU_The_superiority_of_the_copper_race
+				has_completed_focus = PRU_superiority_of_the_copper_race
 			}
 			swap_ideas = {
 			  remove_idea = PRU_inca_army_1_f
@@ -3062,7 +3103,7 @@ focus = {
 focus = {
 	id = PRU_crown_an_inca
     prerequisite = { focus =  PRU_the_inca_congress}
-	mutually_exclusive = { focus = PRU_the_superiority_of_the_copper_race }
+	mutually_exclusive = { focus = PRU_superiority_of_the_copper_race }
 	mutually_exclusive = { focus = PRU_red_pachamama}
 	icon = GFX_goal_PRU_legacy_inca
 
@@ -3286,7 +3327,7 @@ focus = {
 				}
 			}
 			OR = {
-				has_completed_focus = PRU_the_true_owners_of_America
+				has_completed_focus = PRU_the_true_owners_of_america
 				has_completed_focus = PRU_revolutionary_andes
 				has_completed_focus = PRU_organize_protests_in_the_south
 				has_completed_focus = PRU_appoint_a_peruvian_monarch	 
@@ -3361,7 +3402,7 @@ focus = {
 				}
 			}
 			OR = {
-				has_completed_focus = PRU_the_true_owners_of_America
+				has_completed_focus = PRU_the_true_owners_of_america
 				has_completed_focus = PRU_revolutionary_andes
 				has_completed_focus = PRU_organize_protests_in_the_south
 				has_completed_focus = PRU_appoint_a_peruvian_monarch	  
@@ -3571,7 +3612,7 @@ focus = {
 
 
 focus = {
-	id = PRU_Create_orejones_battalions
+	id = PRU_create_orejones_battalions
     prerequisite = { focus =  PRU_the_march_of_the_four_suyos}
 	icon =  GFX_focus_generic_little_entente
 	relative_position_id = PRU_crown_an_inca
@@ -3630,7 +3671,7 @@ focus = {
 
 			if = {
 			limit = {
-				has_completed_focus = PRU_The_superiority_of_the_copper_race
+				has_completed_focus = PRU_superiority_of_the_copper_race
 			}
 			swap_ideas = {
 			  remove_idea = PRU_inca_army_3_f
@@ -3654,7 +3695,7 @@ focus = {
 
 focus = {
 	id = PRU_inca_heavy_industry
-    prerequisite = { focus =  PRU_Create_orejones_battalions}
+    prerequisite = { focus =  PRU_create_orejones_battalions}
 	prerequisite = { focus = PRU_recreate_the_Inca_farming_system}
 	icon = GFX_focus_secret_rearmament
 	relative_position_id = PRU_crown_an_inca
@@ -3692,7 +3733,7 @@ focus = {
 
 focus = {
 	id = PRU_restore_the_kanchas
-    prerequisite = { focus =  PRU_Create_orejones_battalions}
+    prerequisite = { focus =  PRU_create_orejones_battalions}
 	prerequisite = { focus = PRU_recreate_the_Inca_farming_system}
 	icon = GFX_goal_generic_housing
 	relative_position_id = PRU_crown_an_inca
@@ -3865,7 +3906,7 @@ focus = {
 
 			if = {
 			limit = {
-				has_completed_focus = PRU_The_superiority_of_the_copper_race
+				has_completed_focus = PRU_superiority_of_the_copper_race
 			}
 			swap_ideas = {
 			  remove_idea = PRU_inca_army_4_f
@@ -3913,7 +3954,7 @@ focus = {
 		ai_will_do = {
 			factor = 10
 		}
-		Allow_branch = {
+		allow_branch = {
 			has_country_flag = PRU_inkareich
 	    }
 		completion_reward = {
@@ -3931,7 +3972,7 @@ focus = {
 	focus = {
 		id = PRU_the_new_royal_road
 
-		prerequisite = { focus = PRU_the_pact_of_Lima}
+		prerequisite = { focus = PRU_the_pact_of_lima}
 		icon = GFX_goal_war_infrastructure
 		
 		x = 1
@@ -3975,7 +4016,7 @@ focus = {
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 	}
 	focus = {
-		id = PRU_the_pact_of_Lima
+		id = PRU_the_pact_of_lima
 		prerequisite = { focus = PRU_return_of_the_inkari}
 		icon = GFX_goal_constitution
 		
@@ -4037,7 +4078,7 @@ focus = {
 		search_filters = { FOCUS_FILTER_ALLIANCE }
 	}
 	focus = {
-		id = PRU_New_World_Army
+		id = PRU_new_world_army
 		prerequisite = { focus = PRU_return_of_the_inkari}
 		icon = GFX_goal_GER_support_the_freikorps
 		
@@ -4067,7 +4108,7 @@ focus = {
 
 	focus = {
 		id = PRU_call_hans
-		prerequisite = { focus = PRU_the_pact_of_Lima}
+		prerequisite = { focus = PRU_the_pact_of_lima}
 
 		icon = GFX_focus_ger_return_of_the_kaiser
 		
@@ -4148,7 +4189,7 @@ focus = {
 	}
 	focus = {
 		id = PRU_das_inkareich
-		prerequisite = { focus = PRU_New_World_Army}
+		prerequisite = { focus = PRU_new_world_army }
 
 		icon = GFX_goal_GER_restore_weimar
 		
@@ -4191,7 +4232,7 @@ focus = {
 		}
 
 		mutually_exclusive = {
-			focus = PRU_Recognize_German_power
+			focus = PRU_recognize_german_power
 		} 
 		allow_branch = {
 			has_country_flag = PRU_inkareich
@@ -4285,7 +4326,7 @@ focus = {
 	}
 
 	focus = {
-		id = PRU_Recognize_German_power
+		id = PRU_recognize_german_power
 		prerequisite = { focus = PRU_das_inkareich}
 
 		icon = GFX_goal_PRU_german_brother
@@ -4320,7 +4361,7 @@ focus = {
 	}
 
 	focus = {
-		id = PRU_Recognize_German_power_2
+		id = PRU_recognize_german_power_2
 		prerequisite = { focus = PRU_das_inkareich}
 
 		icon = GFX_goal_PRU_german_brother
@@ -4398,7 +4439,7 @@ focus = {
 				}
 			}
 			OR = {
-				has_completed_focus = PRU_the_true_owners_of_America
+				has_completed_focus = PRU_the_true_owners_of_america
 				has_completed_focus = PRU_revolutionary_andes
 				has_completed_focus = PRU_organize_protests_in_the_south
 				has_completed_focus = PRU_appoint_a_peruvian_monarch 	 
@@ -5133,6 +5174,17 @@ focus = {
 		x = 9
 		y = 1
 		relative_position_id = PRU_peruvian_blackshirts
+
+		offset = {
+			trigger = {
+				has_game_rule = {
+					rule = obsolete_focus_branches_visibility
+					option = HIDE
+				}
+				has_completed_focus = PRU_look_to_the_past
+			}
+			x = -33
+		}
 
 		cost = 5
 
@@ -6528,7 +6580,7 @@ focus = {
 			type = take_state_focus
 			target = BOL
 			expire = 0
-			generator = { 302 487 }
+			generator = { 302 487 1077 }
 		}
 	}
 	search_filters = { FOCUS_FILTER_ANNEXATION }
@@ -6662,6 +6714,7 @@ focus = {
 
 	completion_reward = {
 	           	 add_tech_bonus = {
+					name = PRU_control_the_economy
 			       bonus = 1.0
 			        uses = 1
 			        category = industry
@@ -7303,7 +7356,7 @@ focus = {
 }
 
 focus = {
-	id = PRU_Expel_the_reds_from_America
+	id = PRU_expel_the_reds_from_america
 	prerequisite = {focus =PRU_inti_raymi}
 	
 	icon = GFX_focus_ger_bulwark_against_bolshevism
@@ -7343,9 +7396,9 @@ focus = {
 }
 
 focus = {
-	id = PRU_Long_live_our_caudillo
-	prerequisite = {focus =PRU_Expel_the_reds_from_America}
-	mutually_exclusive = { focus = PRU_The_new_South_American_Axis }
+	id = PRU_long_live_our_caudillo
+	prerequisite = {focus =PRU_expel_the_reds_from_america}
+	mutually_exclusive = { focus = PRU_The_new_South_american_axis }
 	icon = GFX_focus_generic_full_social_mobilization
 	x = -1
 	y = 2
@@ -7363,9 +7416,9 @@ focus = {
 }
 
 focus = {
-	id = PRU_The_new_South_American_Axis
-	prerequisite = {focus =PRU_Expel_the_reds_from_America}
-	mutually_exclusive = { focus = PRU_Long_live_our_caudillo }
+	id = PRU_The_new_South_american_axis
+	prerequisite = {focus =PRU_expel_the_reds_from_america}
+	mutually_exclusive = { focus = PRU_long_live_our_caudillo}
 	icon = GFX_focus_ARG_align_with_the_monroe_doctrine
 	x = 1
 	y = 2
@@ -7396,8 +7449,8 @@ focus = {
         }
 }
 focus = {
-	id = PRU_American_Fascist_Union
-	prerequisite = {focus =PRU_Long_live_our_caudillo focus = PRU_The_new_South_American_Axis}
+	id = PRU_american_fascist_union
+	prerequisite = {focus =PRU_long_live_our_caudillo focus = PRU_The_new_South_american_axis}
 	
 	icon = GFX_focus_CHL_promote_pan_hispanic_rhetoric
 	x = 0
@@ -7564,9 +7617,9 @@ focus = {
 }
 
 focus = {
-	id = PRU_Invite_German_military_advisors
+	id = PRU_invite_german_military_advisors
 	prerequisite = {focus =PRU_German_investment_in_the_military_industry}
-	prerequisite = {focus =PRU_A_new_military_doctrine}
+	prerequisite = {focus =PRU_a_new_military_doctrine}
 	icon = GFX_focus_ger_oppose_hitler
 	x = 0
 	y = 2
@@ -7656,7 +7709,7 @@ focus = {
 }
 
 focus = {
-	id = PRU_Japanese_Investment_in_the_Naval_Industry
+	id = PRU_japanese_investment_in_the_naval_industry
 	prerequisite = { focus =PRU_japanece_naval_doctrine}
 	icon = GFX_goal_naval_treaty
 	x = -1
@@ -7691,9 +7744,9 @@ focus = {
 }
 
 focus = {
-	id = PRU_Invite_Japanese_naval_advisors
-	prerequisite = {focus =PRU_Japanese_Investment_in_the_Naval_Industry}
-	prerequisite = {focus =PRU_A_new_military_doctrine}
+	id = PRU_invite_japanese_naval_advisors
+	prerequisite = {focus =PRU_japanese_investment_in_the_naval_industry}
+	prerequisite = {focus =PRU_a_new_military_doctrine}
 	icon = GFX_goal_JAP_tides
 	x = 0
 	y = 2
@@ -7712,7 +7765,7 @@ focus = {
 }
 
 focus = {
-	id = PRU_A_new_military_doctrine
+	id = PRU_a_new_military_doctrine
 	prerequisite = { focus =PRU_japanece_naval_doctrine focus =PRU_german_aeronautic_cooperation}
 	icon = GFX_goal_generic_national_defense_fund
 	x = 1
@@ -8518,7 +8571,7 @@ focus = {
 		has_completed_focus = PRU_the_teachings_the_amauta
 		 if = {
 			limit = {has_country_leader = { character = PRU_arturo_peralta ruling_only = yes }}
-			has_completed_focus = PRU_Workers_Rights_Act
+			has_completed_focus = PRU_workers_rights_act
 		}  
 	    }
 		is_subject = no
@@ -8812,11 +8865,15 @@ focus = {
 	}
 
 	completion_reward = {
-	 hidden_effect = {
-        add_ideas = TIB_mountainous_people
-			}
-	 add_ideas = COL_indoctrination_focus
-
+	 	hidden_effect = {
+        	add_ideas = TIB_mountainous_people
+		}
+		army_experience = 25
+		add_popularity = {
+			ideology = communism
+			popularity = 0.05
+		}
+	 	add_ideas = political_commissars_focus
 	}
 	
 }
@@ -8971,7 +9028,7 @@ focus = {
 					type = medium_tank_chassis_0
 					producer = "SOV" 
 					amount = 300
-					version_name = "T-28"
+					variant_name = "T-28"
 				}
 			}
 			else = {
@@ -9447,7 +9504,7 @@ focus = {
 
 
 focus = {
-		id = PRU_Unite_the_Ecuadorian_proletariat
+		id = PRU_unite_the_ecuadorian_proletariat
 		prerequisite = { focus = PRU_revive_the_bolivarian_dream }
 		icon = GFX_goal_generic_dictatorship_of_proletariat
 		x = -1
@@ -9523,7 +9580,7 @@ focus = {
 
 	focus = {
 		id = PRU_drive_out_the_banana_companies
-		prerequisite = { focus = PRU_Unite_the_Ecuadorian_proletariat }
+		prerequisite = { focus = PRU_unite_the_ecuadorian_proletariat }
 		icon = GFX_goal_generic_hit_the_superstructure
 		x = -1
 		y = 2
@@ -9602,7 +9659,7 @@ focus = {
 	}
 
 	focus = {
-		id = PRU_Union_with_the_PCV
+		id = PRU_union_with_the_pcv
 		prerequisite = { focus = PRU_drive_out_the_banana_companies }
 		icon = GFX_goal_VEN_communism_banned
 		x = -1
@@ -9944,28 +10001,20 @@ focus = {
 		add_popularity = { ideology = neutrality popularity = 0.07 }
 		random_owned_controlled_state = {
 			prioritize = { 303 }
-			add_extra_state_shared_building_slots = 3
+			add_extra_state_shared_building_slots = 2
 			add_building_construction = {
 				type = industrial_complex
-				level = 2
+				level = 1
 				instant_build = yes
 			}
 		}
-		random_owned_controlled_state = {
-			prioritize = {492}
-			add_extra_state_shared_building_slots = 3
-			add_building_construction = {
-				type = industrial_complex
-				level = 3
-				instant_build = yes
-			}
-		}
+		
 	}
 	search_filters = { FOCUS_FILTER_INDUSTRY }
 }
 
 focus = {
-	id = PRU_create_the_National_Education_Fund
+	id = PRU_create_the_national_education_fund
 	prerequisite = { focus = PRU_ochenio_de_Odria}
 	icon = GFX_goal_PRU_defend_peru
 	x = 1
@@ -9985,7 +10034,7 @@ focus = {
 }
 
 focus = {
-	id = PRU_The_new_oil_law
+	id = PRU_the_new_oil_law
 	prerequisite = { focus = PRU_ochenio_de_Odria}
 	icon = GFX_focus_generic_offshore_oil_rig
 	x = -1
@@ -10019,8 +10068,8 @@ focus = {
 }
 
 focus = {
-	id = PRU_Oil_deal_with_the_United_States
-	prerequisite = { focus =PRU_The_new_oil_law}
+	id = PRU_oil_deal_with_the_united_states
+	prerequisite = { focus =PRU_the_new_oil_law}
 	icon = GFX_focus_generic_befriend_usa
 	x = -2
 	y = 2
@@ -10038,8 +10087,8 @@ focus = {
 }
 
 focus = {
-	id = PRU_Great_National_Construction_Program
-	prerequisite = { focus =PRU_The_new_oil_law focus = PRU_create_the_National_Education_Fund}
+	id = PRU_great_national_construction_program
+	prerequisite = { focus =PRU_the_new_oil_law focus = PRU_create_the_national_education_fund}
 	icon = GFX_goal_generic_construction2
 	x = 0
 	y = 2
@@ -10071,12 +10120,10 @@ focus = {
 			if = {
 				limit = {
 					NOT= {
-					  OR= {
-					  has_completed_focus = PRU_a_new_peru
-					   has_completed_focus = PRU_benavides_is_dead
-					   }
+						has_completed_focus = PRU_a_new_peru
+						has_completed_focus = PRU_benavides_is_dead
 					}
-					}
+				}
 				add_ideas = PRU_new_peru_2
 			} 
 		    
@@ -10084,9 +10131,9 @@ focus = {
 }
 
 focus = {
-	id = PRU_Womens_right_to_vote
-	prerequisite = { focus =PRU_Great_National_Construction_Program }
-	prerequisite = { focus =PRU_Oil_deal_with_the_United_States }
+	id = PRU_womens_right_to_vote
+	prerequisite = { focus =PRU_great_national_construction_program }
+	prerequisite = { focus =PRU_oil_deal_with_the_united_states}
 	icon = GFX_goal_FRA_reynaud_economic_reforms
 	x = -1
 	y = 3
@@ -10107,8 +10154,8 @@ focus = {
 }
 
 focus = {
-	id = PRU_Mandatory_Social_Security
-	prerequisite = { focus =PRU_create_the_National_Education_Fund}
+	id = PRU_mandatory_social_security
+	prerequisite = { focus =PRU_create_the_national_education_fund}
 	icon = GFX_goal_generic_dangerous_deal
 	x = 2
 	y = 2
@@ -10127,8 +10174,8 @@ focus = {
 }
 
 focus = {
-	id = PRU_The_empire_of_the_constitution
-	prerequisite = { focus =PRU_Mandatory_Social_Security}
+	id = PRU_the_empire_of_the_constitution
+	prerequisite = { focus =PRU_mandatory_social_security}
 	icon = GFX_focus_spa_the_spanish_miracle
 	x = 2
 	y = 3
@@ -10379,7 +10426,7 @@ focus = {
 }
 
 focus = {
-	id = PRU_Standard_Oil_Refinery_Initiative
+	id = PRU_standard_oil_refinery_initiative
 	prerequisite = { focus = PRU_the_victory_of_our_caudillo }
 	icon = GFX_goal_oil_agreement
 	x = 0
@@ -10405,7 +10452,7 @@ focus = {
 }
 
 focus = {
-	id = PRU_Oil_Infrastructure_Expansion
+	id = PRU_oil_infrastructure_expansion
 	prerequisite = { focus = PRU_the_victory_of_our_caudillo }
 	icon = GFX_goal_generic_construct_infrastructure
 	x = 2
@@ -10444,13 +10491,13 @@ focus = {
 }
 
 focus = {
-	id = PRU_Privatize_the_public_service
-	prerequisite = { focus = PRU_Standard_Oil_Refinery_Initiative}
-	prerequisite = { focus = PRU_Oil_Infrastructure_Expansion }
+	id = PRU_privatize_the_public_service
+	prerequisite = { focus = PRU_standard_oil_refinery_initiative}
+	prerequisite = { focus = PRU_oil_infrastructure_expansion }
 	icon = GFX_goal_generic_economics_reform
 	x = 1
 	y = 1
-	relative_position_id = PRU_Standard_Oil_Refinery_Initiative
+	relative_position_id = PRU_standard_oil_refinery_initiative
 	cost = 5
 	ai_will_do = {
 		factor = 10
@@ -10465,12 +10512,12 @@ focus = {
 }
 
 focus = {
-	id = PRU_Protect_our_businesses
-	prerequisite = { focus = PRU_Privatize_the_public_service }
+	id = PRU_protect_our_businesses
+	prerequisite = { focus = PRU_privatize_the_public_service }
 	icon = GFX_goal_generic_light_industry
 	x = 1
 	y = 3
-	relative_position_id = PRU_Standard_Oil_Refinery_Initiative
+	relative_position_id = PRU_standard_oil_refinery_initiative
 	cost = 5
 	ai_will_do = {
 		factor = 10
@@ -10486,11 +10533,11 @@ focus = {
 
 focus = {
 	id = PRU_expand_the_oil_industry
-	prerequisite = { focus = PRU_Protect_our_businesses }
+	prerequisite = { focus = PRU_protect_our_businesses}
 	icon = GFX_goal_generic_oil_refinery
 	x = 2
 	y = 4
-	relative_position_id = PRU_Standard_Oil_Refinery_Initiative
+	relative_position_id = PRU_standard_oil_refinery_initiative
 	cost = 5
 	search_filters = {FOCUS_FILTER_OIL}
 	ai_will_do = {
@@ -10530,13 +10577,13 @@ focus = {
 }
 
 focus = {
-	id = PRU_Eliminate_the_competition
-	prerequisite = { focus = PRU_Protect_our_businesses }
+	id = PRU_eliminate_the_competition
+	prerequisite = { focus = PRU_protect_our_businesses}
 	prerequisite = { focus = PRU_the_final_march }
 	icon = GFX_goal_generic_industrial_plan
 	x = 0
 	y = 4
-	relative_position_id = PRU_Standard_Oil_Refinery_Initiative
+	relative_position_id = PRU_standard_oil_refinery_initiative
 	cost = 5
 	ai_will_do = {
 		factor = 10
@@ -10590,7 +10637,7 @@ focus = {
 			type = take_state_focus
 			target = BOL
 			expire = 0
-			generator = { 302 487 }
+			generator = { 302 487 1077 }
 		}
 
 	}
@@ -10853,7 +10900,7 @@ focus = {
 }
 
 focus = {
-	id = PRU_The_great_world_revolution
+	id = PRU_the_great_world_revolution
 	prerequisite = { focus = PRU_the_final_march focus = PRU_liberate_all_cab }
 	icon = GFX_focus_ARG_no_gods_no_masters
 
@@ -10928,7 +10975,7 @@ focus = {
 }
 
 focus = {
-	id = PRU_New_Road_Conscription_Law
+	id = PRU_new_road_conscription_law
 	prerequisite = { focus = PRU_mediate_between_the_parties  }
 	icon = GFX_goal_generic_construction3
 	x = 9
@@ -10955,8 +11002,8 @@ focus = {
 }
 
 focus = {
-	id = PRU_Protect_Democratic_Institutions
-	prerequisite = { focus = PRU_New_Road_Conscription_Law  }
+	id = PRU_protect_democratic_institutions
+	prerequisite = { focus = PRU_new_road_conscription_law }
 	icon = GFX_goal_PRU_democratic_peru
 	x = 9
 	y = 2
@@ -10977,8 +11024,8 @@ focus = {
 }
 
 focus = {
-	id = PRU_Workers_Rights_Act
-	prerequisite = { focus = PRU_Protect_Democratic_Institutions }
+	id = PRU_workers_rights_act
+	prerequisite = { focus = PRU_protect_democratic_institutions }
 	prerequisite = { focus = PRU_recover_from_the_economic_crisis }
 	icon = GFX_goal_generic_light_industry
 	x = 8
@@ -11333,7 +11380,7 @@ focus = {
 }
 
 focus = {
-	id = PRU_God_Country_and_Family
+	id = PRU_god_country_and_family
 	prerequisite = { focus =PRU_tax_reform}
 	icon = GFX_goal_PRU_patria_peru
 	x = -2
@@ -11345,11 +11392,11 @@ focus = {
             factor = 10
         }
 		available = {
-          has_completed_focus = PRU_Workers_Rights_Act
+          has_completed_focus = PRU_workers_rights_act
         }
         completion_reward = {
 			if = {
-			limit = {has_completed_focus = PRU_Workers_Rights_Act}
+			limit = {has_completed_focus = PRU_workers_rights_act}
 			swap_ideas = {
 			  remove_idea = PRU_weak_republic_2
 		      add_idea = PRU_conservative_republic 
@@ -11411,7 +11458,7 @@ focus = {
 	}
 
 	completion_reward = {
-		add_ideas = COL_workers_protection
+		add_ideas = COL_workers_protection_idea
 	}
 }
 focus = {
@@ -11452,7 +11499,7 @@ focus = {
 focus = {
 	id = PRU_mobilize_womans
 	prerequisite = { focus = PRU_conservative_coalition}
-	icon = GFX_goal_womens_rights2
+	icon = GFX_goal_womens_rights
 
 	x = -1
 	y = 2
@@ -11607,7 +11654,7 @@ focus = {
             factor = 10
         }
 		available = {
-          has_completed_focus = PRU_Workers_Rights_Act
+          has_completed_focus = PRU_workers_rights_act
         }
         completion_reward = {
 			
@@ -11677,7 +11724,7 @@ focus = {
 	search_filters = { FOCUS_FILTER_INDUSTRY }
 }
 focus = {
-	id = PRU_National_investigation
+	id = PRU_national_investigation
 	prerequisite = { focus = PRU_strengthen_the_national_industry }
 	icon = GFX_goal_research_silver_cooperation
 
@@ -11725,7 +11772,7 @@ focus = {
 focus = {
 	id = PRU_integrate_women
 	prerequisite = { focus = PRU_expand_the_volunteer_program }
-	prerequisite = { focus = PRU_National_investigation }
+	prerequisite = { focus = PRU_national_investigation }
 	icon =  GFX_goal_generic_bills
 
 	x = -1
@@ -11974,7 +12021,7 @@ focus = {
 focus = {
 	id = PRU_food_importation
 	prerequisite = { focus = PRU_expand_the_volunteer_program }
-	prerequisite = { focus = PRU_National_investigation }
+	prerequisite = { focus = PRU_national_investigation }
 	icon = GFX_goal_agrarian_reform
 
 	x = 1
@@ -12137,6 +12184,16 @@ focus = {
 		icon = GFX_goal_CZE_defense
 		x = 67
 		y = 0
+		offset = {
+			trigger = {
+				has_game_rule = {
+					rule = obsolete_focus_branches_visibility
+					option = HIDE
+				}
+				has_completed_focus = PRU_look_to_the_past
+			}
+			x = -33
+		}
 		cost = 5
 		ai_will_do = {
 			factor = 5
@@ -12144,29 +12201,24 @@ focus = {
 		available = {
 			num_divisions > 0
 			CZE = {
-                OR = {
-                exists = yes
-                NOT = {
-                    has_war_with = PRU
-                }
-            }
+				exists = yes
+				NOT = {
+					has_war_with = PRU
+				}
             }
 			OR = {
-		     has_completed_focus = PRU_mediate_between_the_parties
-			 has_completed_focus = PRU_empower_benavides
-			 has_completed_focus = PRU_legacy_of_sachez_cerro
-			 has_completed_focus = PRU_look_to_the_past
-	       }
+				has_completed_focus = PRU_mediate_between_the_parties
+				has_completed_focus = PRU_empower_benavides
+				has_completed_focus = PRU_legacy_of_sachez_cerro
+				has_completed_focus = PRU_look_to_the_past
+			}
 		}
 
 		bypass = {
-			
 			CZE = {
 				OR={
-                has_war_with = PRU
-                NOT = {
-					exists = yes
-                }
+                	has_war_with = PRU
+					exists = no
 				}
             }
 		}
@@ -12177,7 +12229,7 @@ focus = {
 				producer = CZE
 			}
 			add_doctrine_cost_reduction = {
-				name = PRU_czech_equipment
+				name = PRU_czech_equipment_aquisition
 				cost_reduction = 0.5
 				uses = 1
 				category = land_doctrine
@@ -12775,21 +12827,31 @@ focus = {
 	}
 
 	focus = {
-        id = PRU_Marina_de_Guerra
+        id = PRU_a_reborn_navy
         icon = GFX_goal_PRU_marina
 		x = 90
         y = 0
+		offset = {
+			trigger = {
+				has_game_rule = {
+					rule = obsolete_focus_branches_visibility
+					option = HIDE
+				}
+				has_completed_focus = PRU_look_to_the_past
+			}
+			x = -33
+		}
         cost = 10
         ai_will_do = {
             factor = 10
         }
 		available = {
-		OR = {
-		     has_completed_focus = PRU_mediate_between_the_parties
-			 has_completed_focus = PRU_empower_benavides
-			 has_completed_focus = PRU_legacy_of_sachez_cerro
-			 has_completed_focus = PRU_look_to_the_past
-	       }
+			OR = {
+				has_completed_focus = PRU_mediate_between_the_parties
+				has_completed_focus = PRU_empower_benavides
+				has_completed_focus = PRU_legacy_of_sachez_cerro
+				has_completed_focus = PRU_look_to_the_past
+			}
 	    }
         completion_reward = {
 			swap_ideas = {
@@ -12803,9 +12865,9 @@ focus = {
 	focus = {
         id = PRU_work_with_foreigners
         icon = GFX_goal_generic_navy_doctrines_tactics
-		prerequisite = { focus = PRU_Marina_de_Guerra  }
+		prerequisite = { focus = PRU_a_reborn_navy  }
 		mutually_exclusive = { focus = PRU_expand_the_naval_factory_of_bellavista }
-		relative_position_id = PRU_Marina_de_Guerra
+		relative_position_id = PRU_a_reborn_navy
 		x = 1
         y = 1
         cost = 5
@@ -12850,9 +12912,9 @@ focus = {
 	focus = {
         id = PRU_expand_the_naval_factory_of_bellavista
         icon = GFX_goal_generic_large_fleet
-		prerequisite = { focus = PRU_Marina_de_Guerra  }
+		prerequisite = { focus = PRU_a_reborn_navy  }
 		mutually_exclusive = { focus = PRU_work_with_foreigners }
-		relative_position_id = PRU_Marina_de_Guerra
+		relative_position_id = PRU_a_reborn_navy
 		x = -1
         y = 1
         cost = 5
@@ -12889,7 +12951,7 @@ focus = {
         id = PRU_naval_industry
         icon = GFX_goal_generic_construct_naval_dockyard
 		prerequisite = { focus = PRU_expand_the_naval_factory_of_bellavista focus= PRU_work_with_foreigners}
-		relative_position_id = PRU_Marina_de_Guerra
+		relative_position_id = PRU_a_reborn_navy
 		x = 0
         y = 2
         cost = 10
@@ -12922,7 +12984,7 @@ focus = {
         id = PRU_expand_naval_production
         icon = GFX_focus_generic_shipbuilding
 		prerequisite = { focus = PRU_naval_industry}
-		relative_position_id = PRU_Marina_de_Guerra
+		relative_position_id = PRU_a_reborn_navy
 		x = 0
         y = 3
         cost = 10
@@ -12956,7 +13018,7 @@ focus = {
         id = PRU_naval_doctrine
         icon = GFX_goal_generic_navy_cruiser
 		prerequisite = { focus = PRU_expand_naval_production }
-		relative_position_id = PRU_Marina_de_Guerra
+		relative_position_id = PRU_a_reborn_navy
 		x = 0
         y = 4
         cost = 10
@@ -12989,7 +13051,7 @@ focus = {
         id = PRU_National_Admiralty_Corps
         icon = GFX_goal_generic_admirality
 		prerequisite = { focus = PRU_expand_the_naval_factory_of_bellavista focus= PRU_work_with_foreigners }
-		relative_position_id = PRU_Marina_de_Guerra
+		relative_position_id = PRU_a_reborn_navy
 		x = -3
         y = 2
         cost = 10
@@ -13008,7 +13070,7 @@ focus = {
         icon = GFX_goal_generic_navy_submarine
 		prerequisite = { focus = PRU_National_Admiralty_Corps}
 		mutually_exclusive = { focus = PRU_the_grau_class_project }
-		relative_position_id = PRU_Marina_de_Guerra
+		relative_position_id = PRU_a_reborn_navy
 		x = -4
         y = 3
         cost = 10
@@ -13024,7 +13086,7 @@ focus = {
                 uses = 2
                 category = ss_tech
             }
-			add_ideas = COL_submarines_focus
+			add_ideas = AFG_under_the_radar_idea
 			PRU_increase_navy_15_percent = yes 
         }
     }
@@ -13033,7 +13095,7 @@ focus = {
         icon = GFX_goal_navy_schematics
 		prerequisite = { focus = PRU_National_Admiralty_Corps}
 		mutually_exclusive = { focus =PRU_Modernize_our_submarines }
-		relative_position_id = PRU_Marina_de_Guerra
+		relative_position_id = PRU_a_reborn_navy
 		x = -2
         y = 3
         cost =10
@@ -13050,7 +13112,7 @@ focus = {
 				category = ca_tech
 
 			}
-			add_ideas = COL_cruisers_focus
+			add_ideas = AST_R56_submarine_hunters_idea
 			PRU_increase_navy_15_percent = yes 
         }
     }
@@ -13058,7 +13120,7 @@ focus = {
         id = PRU_modernize_destroyers
         icon = GFX_goal_generic_wolf_pack
 		prerequisite = { focus = PRU_work_with_foreigners focus = PRU_expand_the_naval_factory_of_bellavista}
-		relative_position_id = PRU_Marina_de_Guerra
+		relative_position_id = PRU_a_reborn_navy
 		x = 3
         y = 2
         cost = 10
@@ -13093,7 +13155,7 @@ focus = {
         icon = GFX_focus_generic_navy_battleship2
 		prerequisite = { focus = PRU_modernize_destroyers}
 		mutually_exclusive = { focus = PRU_modernize_carrier }
-		relative_position_id = PRU_Marina_de_Guerra
+		relative_position_id = PRU_a_reborn_navy
 		x = 2
         y = 3
         cost = 10
@@ -13118,7 +13180,7 @@ focus = {
         icon = GFX_goal_generic_navy_carrier
 		prerequisite = { focus = PRU_modernize_destroyers}
 		mutually_exclusive = { focus = PRU_modernize_battleships}
-		relative_position_id = PRU_Marina_de_Guerra
+		relative_position_id = PRU_a_reborn_navy
 		x = 4
         y = 3
         cost = 10
@@ -13144,17 +13206,27 @@ focus = {
         icon = GFX_goal_PRU_fuerza_aerea
 		x = 81
         y = 0
+		offset = {
+			trigger = {
+				has_game_rule = {
+					rule = obsolete_focus_branches_visibility
+					option = HIDE
+				}
+				has_completed_focus = PRU_look_to_the_past
+			}
+			x = -33
+		}
         cost = 5
      	ai_will_do = {
             factor = 5
         }
 		available = {
-		OR = {
-		     has_completed_focus = PRU_mediate_between_the_parties
-			 has_completed_focus = PRU_empower_benavides
-			 has_completed_focus = PRU_legacy_of_sachez_cerro
-			 has_completed_focus = PRU_look_to_the_past
-	       }
+			OR = {
+				has_completed_focus = PRU_mediate_between_the_parties
+				has_completed_focus = PRU_empower_benavides
+				has_completed_focus = PRU_legacy_of_sachez_cerro
+				has_completed_focus = PRU_look_to_the_past
+			}
 	    }
         completion_reward = {
 			air_experience = 25
@@ -13697,7 +13769,7 @@ focus = {
 	}
 
 	focus = {
-		id = PRU_Expanded_industrial_region
+		id = PRU_expanded_industrial_region
 		icon = GFX_goal_generic_commie_investments
 		x = 0
 		y = 2
@@ -13939,7 +14011,7 @@ focus = {
 		}
 	}
 	focus = {
-		id = PRU_Stable_Monetary_Policy
+		id = PRU_stable_monetary_policy
 		icon = GFX_goal_generic_financial_markets
 		x = -3
 		y = 2
@@ -13963,12 +14035,12 @@ focus = {
 		}
 	}
 	focus = {
-		id = PRU_The_pan-american_highway
+		id = PRU_the_pan-american_highway
 		icon = GFX_focus_CHL_work_on_the_panamerican_highway
 		x = -2
 		y = 5
 		cost = 10
-		prerequisite = { focus = PRU_Stable_Monetary_Policy }
+		prerequisite = { focus = PRU_stable_monetary_policy}
 		prerequisite = { focus = PRU_construction_industry }
 		relative_position_id = PRU_rely_on_international_trade
 		ai_will_do = {
@@ -14021,7 +14093,7 @@ focus = {
 	}
 
 	focus = {
-		id = PRU_The_Peruvian_industry
+		id = PRU_the_peruvian_industry
 		icon = GFX_goal_generic_strenght_through_industry
 		x = 1
 		y = 1
@@ -14048,7 +14120,7 @@ focus = {
 		y = 1
 		cost = 5
 		prerequisite = { focus = PRU_implement_autarky }
-		mutually_exclusive = { focus = PRU_The_Peruvian_industry}
+		mutually_exclusive = { focus = PRU_the_peruvian_industry}
 		relative_position_id = PRU_implement_autarky
 		ai_will_do = {
 			factor = 5
@@ -14063,7 +14135,7 @@ focus = {
 	}
 
 	focus = {
-		id = PRU_Create_Antamina
+		id = PRU_create_antamina
 		icon = GFX_goal_generic_mining_iron
 		x = -1
 		y = 1
@@ -14096,7 +14168,7 @@ focus = {
 		x = -1
 		y = 2
 		cost = 5
-		prerequisite = { focus = PRU_Create_Antamina}
+		prerequisite = { focus = PRU_create_antamina}
 		relative_position_id = PRU_our_natural_resources
 		ai_will_do = {
 			factor = 5
@@ -14124,7 +14196,7 @@ focus = {
 		x = 0
 		y = 2
 		cost = 5
-		prerequisite = { focus = PRU_The_Peruvian_industry focus = PRU_our_natural_resources}
+		prerequisite = { focus = PRU_the_peruvian_industry focus = PRU_our_natural_resources}
 		relative_position_id = PRU_implement_autarky
 		ai_will_do = {
 			factor = 5
@@ -14146,7 +14218,7 @@ focus = {
 		x = 2
 		y = 2
 		cost = 5
-		prerequisite = { focus = PRU_The_Peruvian_industry focus= PRU_our_natural_resources}
+		prerequisite = { focus = PRU_the_peruvian_industry focus= PRU_our_natural_resources}
 		relative_position_id = PRU_implement_autarky
 		ai_will_do = {
 			factor = 5
@@ -14154,7 +14226,7 @@ focus = {
 		completion_reward = {
 			add_ideas = PRU_nationalized_gold_mines
             if = {
-				limit = {has_completed_focus = PRU_The_Peruvian_industry}
+				limit = {has_completed_focus = PRU_the_peruvian_industry}
 				swap_ideas = {
 					remove_idea = PRU_good_economy_pi
 					add_idea = PRU_good_economy_pi_1
